@@ -69,6 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         labelText: 'Phone Number',
                         labelStyle: TextStyle(color: secondaryColor)),
                     keyboardType: TextInputType.number,
+                    keyboardAppearance: Brightness.dark,
                   ),
                 ),
                 SizedBox(
@@ -88,6 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       labelText: 'OTP',
                       labelStyle: TextStyle(color: secondaryColor)),
                   keyboardType: TextInputType.number,
+                  keyboardAppearance: Brightness.dark,
                 ),
                 const SizedBox(height: 30),
                 _isLoading

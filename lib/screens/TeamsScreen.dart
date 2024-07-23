@@ -56,7 +56,8 @@ class _TeamsScreenState extends State<TeamsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-              drawer: AppDrawer(phoneNumber: '1234567890'), // Pass user phone number here
+      drawer:
+          AppDrawer(phoneNumber: '1234567890'), // Pass user phone number here
 
       backgroundColor: primaryColor,
       body: GestureDetector(

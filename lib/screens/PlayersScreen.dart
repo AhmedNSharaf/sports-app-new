@@ -95,13 +95,44 @@ class _PlayersScreenState extends State<PlayersScreen> {
                 'Age: ${player.playerAge ?? 'N/A'}',
                 style: TextStyle(color: secondaryColor),
               ),
-              Text(
-                'Yellow Cards: ${player.playerYellowCards ?? 'N/A'}',
-                style: TextStyle(color: secondaryColor),
+              Row(
+                children: [
+                  Container(
+                    color: Colors.yellow,
+                    child: SizedBox(
+                      height: 18,
+                      width: 13,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Text(
+                    'Yellow Cards: ${player.playerYellowCards ?? 'N/A'}',
+                    style: TextStyle(color: secondaryColor),
+                  ),
+                ],
               ),
-              Text(
-                'Red Cards: ${player.playerRedCards ?? 'N/A'}',
-                style: TextStyle(color: secondaryColor),
+              SizedBox(
+                height: 3,
+              ),
+              Row(
+                children: [
+                  Container(
+                    color: Colors.red,
+                    child: SizedBox(
+                      height: 18,
+                      width: 13,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Text(
+                    'Red Cards: ${player.playerRedCards ?? 'N/A'}',
+                    style: TextStyle(color: secondaryColor),
+                  ),
+                ],
               ),
               Text(
                 'Goals: ${player.playerGoals ?? 'N/A'}',
@@ -133,7 +164,8 @@ class _PlayersScreenState extends State<PlayersScreen> {
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
-        drawer: AppDrawer(phoneNumber: '1234567890'), // Pass user phone number here
+        drawer:
+            AppDrawer(phoneNumber: '1234567890'), // Pass user phone number here
         backgroundColor: primaryColor,
         appBar: AppBar(
           leading: IconButton(
@@ -146,8 +178,8 @@ class _PlayersScreenState extends State<PlayersScreen> {
           centerTitle: true,
           title: const Text(
             'Players',
-            style: TextStyle(
-                color: secondaryColor, fontWeight: FontWeight.bold),
+            style:
+                TextStyle(color: secondaryColor, fontWeight: FontWeight.bold),
           ),
         ),
         body: Column(

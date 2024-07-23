@@ -1,19 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:sports_app/screens/sports_category.dart';
-import 'package:sports_app/widgets/splash/splashScreenWidget.dart';
+import 'package:sports_app/screens/countriesScreen.dart';
+//import 'package:graduation_project_iti/screens/teams_screen.dart';
+import 'package:provider/provider.dart';
+import 'package:sports_app/screens/countriesScreen.dart';
+//import 'screens/country_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => LocationProvider()),
+      ],
+      child: MyApp(),
+    ),
+  );
 }
 
+// ignore: use_key_in_widget_constructors
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Splashscreen(),
+      home:CountriesScreen(),
     );
   }
 }
