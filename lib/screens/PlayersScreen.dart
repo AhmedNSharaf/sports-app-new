@@ -134,13 +134,45 @@ class _PlayersScreenState extends State<PlayersScreen> {
                   ),
                 ],
               ),
-              Text(
-                'Goals: ${player.playerGoals ?? 'N/A'}',
-                style: TextStyle(color: secondaryColor),
+              SizedBox(
+                height: 3,
               ),
-              Text(
-                'Assists: ${player.playerAssists ?? 'N/A'}',
-                style: TextStyle(color: secondaryColor),
+              Row(
+                children: [
+                  Container(
+                    color: secondaryColor,
+                    height: 20,
+                    width: 20,
+                    child: Image.asset('assets/icons/goal.png'),
+                  ),
+                  SizedBox(
+                    width: 2,
+                  ),
+                  Text(
+                    'Goals: ${player.playerGoals ?? 'N/A'}',
+                    style: TextStyle(color: secondaryColor),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 3,
+              ),
+              Row(
+                children: [
+                  Container(
+                    color: secondaryColor,
+                    height: 20,
+                    width: 20,
+                    child: Image.asset('assets/icons/football.png'),
+                  ),
+                  SizedBox(
+                    width: 2,
+                  ),
+                  Text(
+                    'Assists: ${player.playerAssists ?? 'N/A'}',
+                    style: TextStyle(color: secondaryColor),
+                  ),
+                ],
               ),
             ],
           ),
@@ -149,6 +181,7 @@ class _PlayersScreenState extends State<PlayersScreen> {
               child: const Text('Close'),
               onPressed: () {
                 Navigator.of(context).pop();
+                FocusScope.of(context).unfocus();
               },
             ),
           ],
@@ -229,33 +262,37 @@ class _PlayersScreenState extends State<PlayersScreen> {
                           color: thirdColor,
                           elevation: 5,
                           child: ListTile(
-                            leading: player.playerImage != null &&
-                                    player.playerImage!.isNotEmpty
-                                ? Image.network(
-                                    player.playerImage!,
-                                    height: 50,
-                                    width: 50,
-                                    errorBuilder: (context, error, stackTrace) {
-                                      return const Icon(Icons.error,
-                                          color: secondaryColor);
-                                    },
-                                  )
-                                : const Icon(Icons.person,
-                                    color: secondaryColor, size: 50),
-                            title: Text(
-                              player.playerName,
-                              style: const TextStyle(
-                                fontSize: 16,
-                                color: secondaryColor,
-                                fontWeight: FontWeight.bold,
+                              leading: player.playerImage != null &&
+                                      player.playerImage!.isNotEmpty
+                                  ? Image.network(
+                                      player.playerImage!,
+                                      height: 50,
+                                      width: 50,
+                                      errorBuilder:
+                                          (context, error, stackTrace) {
+                                        return const Icon(Icons.error,
+                                            color: secondaryColor);
+                                      },
+                                    )
+                                  : const Icon(Icons.person,
+                                      color: secondaryColor, size: 50),
+                              title: Text(
+                                player.playerName,
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                  color: secondaryColor,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
-                            ),
-                            subtitle: Text(
-                              player.playerType,
-                              style: const TextStyle(color: secondaryColor),
-                            ),
-                            onTap: () => _showPlayerDetails(player),
-                          ),
+                              subtitle: Text(
+                                player.playerType,
+                                style: const TextStyle(color: secondaryColor),
+                              ),
+                              onTap: () {
+                                FocusScope.of(context).unfocus();
+
+                                _showPlayerDetails(player);
+                              }),
                         );
                       },
                     );
