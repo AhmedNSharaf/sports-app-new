@@ -3,6 +3,7 @@ import 'package:sports_app/data/models/PlayersData.dart';
 import 'package:sports_app/data/reposetories/PlayersRepo.dart';
 import 'package:sports_app/utils/colors.dart';
 import 'package:sports_app/widgets/drawer.dart';
+import 'package:share_plus/share_plus.dart';
 
 class PlayersScreen extends StatefulWidget {
   final int teamId;
@@ -177,6 +178,14 @@ class _PlayersScreenState extends State<PlayersScreen> {
             ],
           ),
           actions: <Widget>[
+            TextButton(
+              child: const Text('Share'),
+              onPressed: () {
+                final shareContent =
+                    'Player Name : ${player.playerName} \nFrom : ${player.playerCountry} \nplays For : ${player.teamName}';
+                Share.share(shareContent);
+              },
+            ),
             TextButton(
               child: const Text('Close'),
               onPressed: () {

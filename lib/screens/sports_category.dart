@@ -10,12 +10,14 @@ class CategoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
               drawer: AppDrawer(phoneNumber: '1234567890'), // Pass user phone number here
 
       appBar: AppBar(
         backgroundColor: primaryColor,
         scrolledUnderElevation: 0,
         centerTitle: true,
+        
         title: Text(
           'Sports Category',
           style: TextStyle(color: secondaryColor, fontWeight: FontWeight.bold),

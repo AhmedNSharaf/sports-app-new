@@ -43,7 +43,8 @@ class CountriesAppBar extends StatelessWidget implements PreferredSizeWidget {
   final LocationProvider locationProvider;
   final Function onLocationButtonPressed;
 
-  CountriesAppBar({required this.locationProvider, required this.onLocationButtonPressed});
+  CountriesAppBar(
+      {required this.locationProvider, required this.onLocationButtonPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -102,9 +103,11 @@ class _CountriesScreenState extends State<CountriesScreen> {
 
   void scrollToCountry(String countryName) {
     print("Scrolling to country: $countryName");
-    final index = countries.indexWhere((country) => country.countryName == countryName);
+    final index =
+        countries.indexWhere((country) => country.countryName == countryName);
     if (index != -1) {
-      final int row = (index / 2).floor(); // 2 is the number of columns in the grid
+      final int row =
+          (index / 2).floor(); // 2 is the number of columns in the grid
       final double targetOffset = row * _itemHeight;
       _scrollController.animateTo(
         targetOffset,
@@ -117,8 +120,11 @@ class _CountriesScreenState extends State<CountriesScreen> {
   }
 
   bool isCountryCurrentLocation(Result country) {
-    final currentCountryName = Provider.of<LocationProvider>(context, listen: false).currentCountryName;
-    print("Current Country: $currentCountryName, Checking against: ${country.countryName}");
+    final currentCountryName =
+        Provider.of<LocationProvider>(context, listen: false)
+            .currentCountryName;
+    print(
+        "Current Country: $currentCountryName, Checking against: ${country.countryName}");
     return country.countryName == currentCountryName;
   }
 
@@ -126,7 +132,8 @@ class _CountriesScreenState extends State<CountriesScreen> {
   Widget build(BuildContext context) {
     final locationProvider = Provider.of<LocationProvider>(context);
     return Scaffold(
-      drawer: AppDrawer(phoneNumber: '1234567890'), // Pass user phone number here
+      drawer:
+          AppDrawer(phoneNumber: '1234567890'), // Pass user phone number here
       backgroundColor: primaryColor,
       appBar: CountriesAppBar(
         locationProvider: locationProvider,
@@ -145,7 +152,7 @@ class _CountriesScreenState extends State<CountriesScreen> {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 'Current Location: ${locationProvider.currentPosition!.latitude}, ${locationProvider.currentPosition!.longitude}\nCountry: ${locationProvider.currentCountryName ?? "Unknown"}',
-                style: const TextStyle(fontSize: 16,color: Colors.white),
+                style: const TextStyle(fontSize: 16, color: Colors.white),
               ),
             ),
           Expanded(
@@ -155,14 +162,19 @@ class _CountriesScreenState extends State<CountriesScreen> {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return const Center(child: CircularProgressIndicator());
                 } else if (snapshot.hasError) {
-                  return const Center(child: Text('Failed to load countries data'));
+                  return const Center(
+                      child: Text(
+                    'Failed to load countries data',
+                    style: TextStyle(color: secondaryColor),
+                  ));
                 } else if (!snapshot.hasData || snapshot.data!.result.isEmpty) {
                   return const Center(child: Text('No countries available'));
                 } else {
                   countries = snapshot.data!.result;
                   return GridView.builder(
                     controller: _scrollController,
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
                       childAspectRatio: 4.2 / 5,
                       crossAxisSpacing: 10,
@@ -178,7 +190,8 @@ class _CountriesScreenState extends State<CountriesScreen> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => LeaguesScreen(countryKey: country.countryKey),
+                                builder: (context) => LeaguesScreen(
+                                    countryKey: country.countryKey),
                               ),
                             );
                           else
@@ -231,11 +244,13 @@ class _CountriesScreenState extends State<CountriesScreen> {
                                   height: 50,
                                   width: 50,
                                   errorBuilder: (context, error, stackTrace) {
-                                    return const Icon(Icons.error, color: secondaryColor);
+                                    return const Icon(Icons.error,
+                                        color: secondaryColor);
                                   },
                                 )
                               else
-                                const Icon(Icons.flag, color: secondaryColor, size: 50),
+                                const Icon(Icons.flag,
+                                    color: secondaryColor, size: 50),
                               const SizedBox(height: 10),
                               if (country.countryName == 'Israel')
                                 Text(
@@ -252,9 +267,9 @@ class _CountriesScreenState extends State<CountriesScreen> {
                                   country.countryName,
                                   textAlign: TextAlign.center,
                                   style: const TextStyle(
-                                    fontSize: 16,
-                                    color: secondaryColor,
-                                    fontWeight: FontWeight.bold),
+                                      fontSize: 16,
+                                      color: secondaryColor,
+                                      fontWeight: FontWeight.bold),
                                 ),
                             ],
                           ),
