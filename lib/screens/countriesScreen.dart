@@ -85,7 +85,7 @@ class CountriesScreen extends StatefulWidget {
 class _CountriesScreenState extends State<CountriesScreen> {
   late Future<CountriesData> futureCountriesData;
   late ScrollController _scrollController;
-  double _itemHeight = 150.0; // Adjust based on your item height
+  double _itemHeight = 220.0; // Adjust based on your item height
   late List<Result> countries;
 
   @override
@@ -233,6 +233,16 @@ class _CountriesScreenState extends State<CountriesScreen> {
                         child: Card(
                           color: thirdColor,
                           elevation: 5,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15),
+                              side: BorderSide(
+                                color: locationProvider.currentPosition != null && isCountryCurrentLocation(country)
+                                    ? Colors.green // Special color for current location
+                                    : Colors.grey, // Default color
+                                width: 2,
+                              ),
+                          ),
+                          
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
