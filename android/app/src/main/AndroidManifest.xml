@@ -7,7 +7,7 @@
 
 
     <application
-        android:label="graduation_project_iti"
+        android:label="Sports"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
