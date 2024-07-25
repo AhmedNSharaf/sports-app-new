@@ -12,10 +12,10 @@ class PlayersData {
   }
 
   Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['success'] = success;
-    _data['result'] = result.map((e) => e.toJson()).toList();
-    return _data;
+    final data = <String, dynamic>{};
+    data['success'] = success;
+    data['result'] = result.map((e) => e.toJson()).toList();
+    return data;
   }
 }
 
@@ -156,50 +156,50 @@ class Result {
   }
 
   Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['player_key'] = playerKey;
-    _data['player_name'] = playerName;
-    _data['player_number'] = playerNumber;
-    _data['player_country'] = playerCountry;
-    _data['player_type'] = playerType;
-    _data['player_age'] = playerAge;
-    _data['player_match_played'] = playerMatchPlayed;
-    _data['player_goals'] = playerGoals;
-    _data['player_yellow_cards'] = playerYellowCards;
-    _data['player_red_cards'] = playerRedCards;
-    _data['player_minutes'] = playerMinutes;
-    _data['player_injured'] = playerInjured;
-    _data['player_substitute_out'] = playerSubstituteOut;
-    _data['player_substitutes_on_bench'] = playerSubstitutesOnBench;
-    _data['player_assists'] = playerAssists;
-    _data['player_is_captain'] = playerIsCaptain;
-    _data['player_shots_total'] = playerShotsTotal;
-    _data['player_goals_conceded'] = playerGoalsConceded;
-    _data['player_fouls_commited'] = playerFoulsCommited;
-    _data['player_tackles'] = playerTackles;
-    _data['player_blocks'] = playerBlocks;
-    _data['player_crosses_total'] = playerCrossesTotal;
-    _data['player_interceptions'] = playerInterceptions;
-    _data['player_clearances'] = playerClearances;
-    _data['player_dispossesed'] = playerDispossesed;
-    _data['player_saves'] = playerSaves;
-    _data['player_inside_box_saves'] = playerInsideBoxSaves;
-    _data['player_duels_total'] = playerDuelsTotal;
-    _data['player_duels_won'] = playerDuelsWon;
-    _data['player_dribble_attempts'] = playerDribbleAttempts;
-    _data['player_dribble_succ'] = playerDribbleSucc;
-    _data['player_pen_comm'] = playerPenComm;
-    _data['player_pen_won'] = playerPenWon;
-    _data['player_pen_scored'] = playerPenScored;
-    _data['player_pen_missed'] = playerPenMissed;
-    _data['player_passes'] = playerPasses;
-    _data['player_passes_accuracy'] = playerPassesAccuracy;
-    _data['player_key_passes'] = playerKeyPasses;
-    _data['player_woordworks'] = playerWoordworks;
-    _data['player_rating'] = playerRating;
-    _data['team_name'] = teamName;
-    _data['team_key'] = teamKey;
-    _data['player_image'] = playerImage;
-    return _data;
+    final data = <String, dynamic>{};
+    data['player_key'] = playerKey;
+    data['player_name'] = playerName;
+    data['player_number'] = playerNumber;
+    data['player_country'] = playerCountry;
+    data['player_type'] = playerType;
+    data['player_age'] = playerAge;
+    data['player_match_played'] = playerMatchPlayed;
+    data['player_goals'] = playerGoals;
+    data['player_yellow_cards'] = playerYellowCards;
+    data['player_red_cards'] = playerRedCards;
+    data['player_minutes'] = playerMinutes;
+    data['player_injured'] = playerInjured;
+    data['player_substitute_out'] = playerSubstituteOut;
+    data['player_substitutes_on_bench'] = playerSubstitutesOnBench;
+    data['player_assists'] = playerAssists;
+    data['player_is_captain'] = playerIsCaptain;
+    data['player_shots_total'] = playerShotsTotal;
+    data['player_goals_conceded'] = playerGoalsConceded;
+    data['player_fouls_commited'] = playerFoulsCommited;
+    data['player_tackles'] = playerTackles;
+    data['player_blocks'] = playerBlocks;
+    data['player_crosses_total'] = playerCrossesTotal;
+    data['player_interceptions'] = playerInterceptions;
+    data['player_clearances'] = playerClearances;
+    data['player_dispossesed'] = playerDispossesed;
+    data['player_saves'] = playerSaves;
+    data['player_inside_box_saves'] = playerInsideBoxSaves;
+    data['player_duels_total'] = playerDuelsTotal;
+    data['player_duels_won'] = playerDuelsWon;
+    data['player_dribble_attempts'] = playerDribbleAttempts;
+    data['player_dribble_succ'] = playerDribbleSucc;
+    data['player_pen_comm'] = playerPenComm;
+    data['player_pen_won'] = playerPenWon;
+    data['player_pen_scored'] = playerPenScored;
+    data['player_pen_missed'] = playerPenMissed;
+    data['player_passes'] = playerPasses;
+    data['player_passes_accuracy'] = playerPassesAccuracy;
+    data['player_key_passes'] = playerKeyPasses;
+    data['player_woordworks'] = playerWoordworks;
+    data['player_rating'] = playerRating;
+    data['team_name'] = teamName;
+    data['team_key'] = teamKey;
+    data['player_image'] = playerImage;
+    return data;
   }
 }

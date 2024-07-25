@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sports_app/screens/countriesScreen.dart';
 import 'package:sports_app/utils/colors.dart';
 import 'package:sports_app/widgets/category/sports_categorywidget.dart';
-import 'package:sports_app/widgets/drawer.dart';
+import 'package:sports_app/screens/drawer.dart';
 
 class CategoryScreen extends StatelessWidget {
   const CategoryScreen({super.key});
@@ -10,27 +10,30 @@ class CategoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
-              drawer: AppDrawer(phoneNumber: '1234567890'), // Pass user phone number here
+      backgroundColor: primaryColor,
+      drawer:
+          AppDrawer(phoneNumber: '1234567890'), // Pass user phone number here
 
       appBar: AppBar(
         backgroundColor: primaryColor,
         scrolledUnderElevation: 0,
         centerTitle: true,
-        
-        title: Text(
+        title: const Text(
           'Sports Category',
           style: TextStyle(color: secondaryColor, fontWeight: FontWeight.bold),
         ),
+        iconTheme: const IconThemeData(color: secondaryColor),
       ),
+
       body: Container(
+        margin: const EdgeInsets.only(top: 25),
         color: primaryColor,
         child: GridView.builder(
-          physics: BouncingScrollPhysics(),
-          padding: EdgeInsets.all(6),
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          physics: const BouncingScrollPhysics(),
+          padding: const EdgeInsets.all(6),
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            childAspectRatio: 3 / 4, // Adjust aspect ratio as needed
+            childAspectRatio: 2.3 / 4, // Adjust aspect ratio as needed
             crossAxisSpacing: 10,
             mainAxisSpacing: 10,
           ),
@@ -62,14 +65,14 @@ class CategoryWidget extends StatelessWidget {
             context: context,
             builder: (context) => AlertDialog(
               backgroundColor: thirdColor, // Set the background color here
-              title: Text(
+              title: const Text(
                 'Coming Soon',
                 style: TextStyle(
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
                     color: primaryColor),
               ),
-              content: Text(
+              content: const Text(
                 'This feature is coming soon.',
                 style: TextStyle(
                     fontSize: 15,
@@ -81,7 +84,7 @@ class CategoryWidget extends StatelessWidget {
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  child: Text(
+                  child: const Text(
                     'OK',
                     style: TextStyle(
                         fontSize: 25,
@@ -111,7 +114,7 @@ class CategoryWidget extends StatelessWidget {
               ),
             ),
             Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 gradient: LinearGradient(
                   colors: [Colors.black54, Colors.transparent],
                   begin: Alignment.bottomCenter,
@@ -124,7 +127,7 @@ class CategoryWidget extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 category.name,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                   color: secondaryColor,

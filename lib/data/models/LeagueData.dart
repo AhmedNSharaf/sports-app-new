@@ -12,10 +12,10 @@ class LeagueData {
   }
 
   Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['success'] = success;
-    _data['result'] = result.map((e) => e.toJson()).toList();
-    return _data;
+    final data = <String, dynamic>{};
+    data['success'] = success;
+    data['result'] = result.map((e) => e.toJson()).toList();
+    return data;
   }
 }
 
@@ -45,13 +45,13 @@ class Result {
   }
 
   Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['league_key'] = leagueKey;
-    _data['league_name'] = leagueName;
-    _data['country_key'] = countryKey;
-    _data['country_name'] = countryName;
-    _data['league_logo'] = leagueLogo;
-    _data['country_logo'] = countryLogo;
-    return _data;
+    final data = <String, dynamic>{};
+    data['league_key'] = leagueKey;
+    data['league_name'] = leagueName;
+    data['country_key'] = countryKey;
+    data['country_name'] = countryName;
+    data['league_logo'] = leagueLogo;
+    data['country_logo'] = countryLogo;
+    return data;
   }
 }

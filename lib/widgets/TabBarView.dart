@@ -12,10 +12,10 @@ class TeamsTab extends StatefulWidget {
   TeamsTab({super.key, required this.leagueId});
 
   @override
-  _TeamsTabState createState() => _TeamsTabState();
+  TeamsTabState createState() => TeamsTabState();
 }
 
-class _TeamsTabState extends State<TeamsTab> {
+class TeamsTabState extends State<TeamsTab> {
   late Future<TeamsData> futureTeamsData;
 
   @override
@@ -75,14 +75,14 @@ class _TeamsTabState extends State<TeamsTab> {
 class LeagueDetailsTab extends StatelessWidget {
   final int leagueId;
 
-  LeagueDetailsTab({super.key, required this.leagueId});
+  const LeagueDetailsTab({super.key, required this.leagueId});
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Text(
         'League Details for ID: $leagueId',
-        style: TextStyle(color: secondaryColor, fontSize: 20),
+        style: const TextStyle(color: secondaryColor, fontSize: 20),
       ),
     );
   }

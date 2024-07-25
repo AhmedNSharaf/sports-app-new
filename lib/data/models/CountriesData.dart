@@ -12,10 +12,10 @@ class CountriesData {
   }
 
   Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['success'] = success;
-    _data['result'] = result.map((e) => e.toJson()).toList();
-    return _data;
+    final data = <String, dynamic>{};
+    data['success'] = success;
+    data['result'] = result.map((e) => e.toJson()).toList();
+    return data;
   }
 }
 
@@ -39,11 +39,11 @@ class Result {
   }
 
   Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['country_key'] = countryKey;
-    _data['country_name'] = countryName;
-    _data['country_iso2'] = countryIso2;
-    _data['country_logo'] = countryLogo;
-    return _data;
+    final data = <String, dynamic>{};
+    data['country_key'] = countryKey;
+    data['country_name'] = countryName;
+    data['country_iso2'] = countryIso2;
+    data['country_logo'] = countryLogo;
+    return data;
   }
 }

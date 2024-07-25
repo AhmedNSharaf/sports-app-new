@@ -7,7 +7,7 @@ import 'package:sports_app/data/reposetories/CountriesRepo.dart';
 import 'package:sports_app/screens/leagusScreen.dart';
 import 'package:sports_app/utils/colors.dart';
 //import 'package:sports_app/widgets/countries/location_provider.dart';
-import 'package:sports_app/widgets/drawer.dart';
+import 'package:sports_app/screens/drawer.dart';
 
 class LocationProvider with ChangeNotifier {
   Position? _currentPosition;
@@ -49,6 +49,7 @@ class CountriesAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      iconTheme: const IconThemeData(color: secondaryColor),
       leading: IconButton(
         icon: const Icon(Icons.arrow_back, color: secondaryColor),
         onPressed: () {
@@ -65,9 +66,15 @@ class CountriesAppBar extends StatelessWidget implements PreferredSizeWidget {
         IconButton(
           icon: const Icon(
             Icons.location_on,
-            color: Color(0xffFFFFFF),
+            color: secondaryColor,
           ),
           onPressed: () => onLocationButtonPressed(),
+        ),
+        IconButton(
+          icon: const Icon(Icons.menu, color: secondaryColor),
+          onPressed: () {
+            Scaffold.of(context).openDrawer();
+          },
         ),
       ],
     );
@@ -186,7 +193,7 @@ class _CountriesScreenState extends State<CountriesScreen> {
                       var country = countries[index];
                       return GestureDetector(
                         onTap: () {
-                          if (country.countryName != 'Israel')
+                          if (country.countryName != 'Israel') {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -194,19 +201,19 @@ class _CountriesScreenState extends State<CountriesScreen> {
                                     countryKey: country.countryKey),
                               ),
                             );
-                          else
+                          } else {
                             showDialog(
                               context: context,
                               builder: (context) => AlertDialog(
                                 backgroundColor: thirdColor,
-                                title: Text(
+                                title: const Text(
                                   'Coming Soon',
                                   style: TextStyle(
                                       fontSize: 25,
                                       fontWeight: FontWeight.bold,
                                       color: primaryColor),
                                 ),
-                                content: Text(
+                                content: const Text(
                                   'Palestine leagues are coming soon.',
                                   style: TextStyle(
                                       fontSize: 15,
@@ -218,7 +225,7 @@ class _CountriesScreenState extends State<CountriesScreen> {
                                     onPressed: () {
                                       Navigator.of(context).pop();
                                     },
-                                    child: Text(
+                                    child: const Text(
                                       'OK',
                                       style: TextStyle(
                                           fontSize: 25,
@@ -229,20 +236,22 @@ class _CountriesScreenState extends State<CountriesScreen> {
                                 ],
                               ),
                             );
+                          }
                         },
                         child: Card(
                           color: thirdColor,
                           elevation: 5,
                           shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15),
-                              side: BorderSide(
-                                color: locationProvider.currentPosition != null && isCountryCurrentLocation(country)
-                                    ? Colors.green // Special color for current location
-                                    : Colors.grey, // Default color
-                                width: 2,
-                              ),
+                            borderRadius: BorderRadius.circular(15),
+                            side: BorderSide(
+                              color: locationProvider.currentPosition != null &&
+                                      isCountryCurrentLocation(country)
+                                  ? Colors
+                                      .green // Special color for current location
+                                  : Colors.grey, // Default color
+                              width: 2,
+                            ),
                           ),
-                          
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -263,10 +272,10 @@ class _CountriesScreenState extends State<CountriesScreen> {
                                     color: secondaryColor, size: 50),
                               const SizedBox(height: 10),
                               if (country.countryName == 'Israel')
-                                Text(
+                                const Text(
                                   'Free\nPalestine',
                                   textAlign: TextAlign.center,
-                                  style: const TextStyle(
+                                  style: TextStyle(
                                     fontSize: 20,
                                     color: Colors.green,
                                     fontWeight: FontWeight.bold,

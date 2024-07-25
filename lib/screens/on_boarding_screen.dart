@@ -8,10 +8,10 @@ class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key}); // Constructor for the OnboardingScreen
 
   @override
-  _OnboardingScreenState createState() => _OnboardingScreenState(); // Creates the state for OnboardingScreen
+  OnboardingScreenState createState() => OnboardingScreenState(); // Creates the state for OnboardingScreen
 }
 
-class _OnboardingScreenState extends State<OnboardingScreen> {
+class OnboardingScreenState extends State<OnboardingScreen> {
   final PageController _controller = PageController(); // Controller for the PageView
   late Timer _timer; // Timer to handle automatic page transitions
   int _currentPage = 0; // Current page index
@@ -80,10 +80,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             padding: const EdgeInsets.all(16.0),
             child: ElevatedButton(
               onPressed: () {
-                // Navigate to the LoginScreen when the button is pressed
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                  builder: (context) => LoginScreen(),
-                ));
+                Navigator.of(context).pushReplacement(_createSlideUpRoute());
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: thirdColor, // Background color of the button
@@ -129,6 +126,23 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           ),
         ],
       ),
+    );
+  }
+
+  // Method to create the custom page route with slide-up transition
+  PageRouteBuilder _createSlideUpRoute() {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => const LoginScreen(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        const begin = Offset(0.0, 1.0); // Start from the bottom
+        const end = Offset.zero; // End at the top
+        const curve = Curves.easeInOut;
+
+        var tween = Tween(begin: begin, end: end);
+        var offsetAnimation = animation.drive(tween.chain(CurveTween(curve: curve)));
+
+        return SlideTransition(position: offsetAnimation, child: child);
+      },
     );
   }
 }

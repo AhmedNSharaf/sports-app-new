@@ -1,5 +1,3 @@
-// ignore_for_file: library_private_types_in_public_api
-
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -16,11 +14,40 @@ class LoginScreen extends StatefulWidget {
   _LoginScreenState createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends State<LoginScreen>
+    with SingleTickerProviderStateMixin {
   final _phoneNumberController = TextEditingController();
   final _otpController = TextEditingController();
   String? _generatedOtp;
   bool _isLoading = false;
+
+  late AnimationController _animationController;
+  late Animation<double> _animation;
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Initialize AnimationController
+    _animationController = AnimationController(
+      duration: const Duration(seconds: 2),
+      vsync: this,
+    )..repeat(reverse: true); // Repeats animation and reverses
+
+    // Define the animation for scaling the image
+    _animation = Tween<double>(begin: 1.0, end: 1.2).animate(
+      CurvedAnimation(
+        parent: _animationController,
+        curve: Curves.easeInOut,
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,20 +62,52 @@ class _LoginScreenState extends State<LoginScreen> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                SizedBox(
-                  height: 30,
+                const SizedBox(
+                  height: 70,
                 ),
-                SizedBox(
-                  height: 180,
-                  width: 180,
-                  child: Image.asset('assets/icons/balls-sports.png'),
+                AnimatedBuilder(
+                  animation: _animation,
+                  builder: (context, child) {
+                    return Transform.scale(
+                      scale: _animation.value,
+                      child: child,
+                    );
+                  },
+                  child: SizedBox(
+                    height: 180,
+                    width: 180,
+                    child: Image.asset('assets/icons/balls-sports.png'),
+                  ),
                 ),
-                const Text(
-                  'Login',
-                  style: TextStyle(
-                    color: secondaryColor,
-                    fontSize: 30,
-                    fontFamily: 'Ubuntu',
+                // AnimatedBuilder(
+                //   animation: _animation,
+                //   builder: (context, child) {
+                //     return Transform.scale(
+                //       scale: _animation.value,
+                //       child: child,
+                //     );
+                //   },
+                //   child: SizedBox(
+                //     //height: 180,
+                //     //width: 180,
+                //     child: Text(
+                //       'Login',
+                //       style: TextStyle(
+                //         color: secondaryColor,
+                //         fontSize: 30,
+                //         fontFamily: 'Ubuntu',
+                //       ),
+                //     ),
+                //   ),
+                // ),
+                const SizedBox(
+                  child: Text(
+                    'Login',
+                    style: TextStyle(
+                      color: secondaryColor,
+                      fontSize: 30,
+                      fontFamily: 'Ubuntu',
+                    ),
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -57,6 +116,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     style: const TextStyle(color: secondaryColor),
                     controller: _phoneNumberController,
                     decoration: const InputDecoration(
+                        prefixIcon: Icon(
+                          Icons.phone,
+                        ),
+                        prefixIconColor: secondaryColor,
                         focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: thirdColor),
                         ),
@@ -72,7 +135,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     keyboardAppearance: Brightness.dark,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
                 TextField(
@@ -157,18 +220,18 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 Row(
                   children: [
-                    Spacer(),
-                    Text(
+                    const Spacer(),
+                    const Text(
                       'Don\'t have an account ?',
                       style: TextStyle(color: secondaryColor, fontSize: 15),
                     ),
                     TextButton(
                         onPressed: () {
                           Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => Registerscreen(),
+                            builder: (context) => const Registerscreen(),
                           ));
                         },
-                        child: Text(
+                        child: const Text(
                           'Register',
                           style: TextStyle(color: thirdColor, fontSize: 18),
                         ))
@@ -232,9 +295,9 @@ class _LoginScreenState extends State<LoginScreen> {
         context: context,
         builder: (context) => AlertDialog(
           backgroundColor: primaryColor,
-          title: Row(
+          title: const Row(
             children: [
-              const Text(
+              Text(
                 'Error',
                 style: TextStyle(color: Colors.red, fontSize: 25),
               ),
@@ -249,7 +312,7 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
           content: const Text(
             'Invalid OTP',
-            style: const TextStyle(color: secondaryColor, fontSize: 20),
+            style:  TextStyle(color: secondaryColor, fontSize: 20),
           ),
           actions: [
             TextButton(
@@ -266,9 +329,9 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void _googleLogin() async {
-    GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ['email']);
+    GoogleSignIn googleSignIn = GoogleSignIn(scopes: ['email']);
     try {
-      var result = await _googleSignIn.signIn();
+      var result = await googleSignIn.signIn();
       if (result != null) {
         SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.setBool('isLoggedIn', true);

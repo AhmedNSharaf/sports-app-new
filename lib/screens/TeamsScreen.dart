@@ -3,18 +3,18 @@ import 'package:sports_app/data/models/TeamsData.dart';
 import 'package:sports_app/data/reposetories/TeamsRepo.dart';
 import 'package:sports_app/screens/PlayersScreen.dart';
 import 'package:sports_app/utils/colors.dart';
-import 'package:sports_app/widgets/drawer.dart';
+import 'package:sports_app/screens/drawer.dart';
 
 class TeamsScreen extends StatefulWidget {
   final int leagueId;
 
-  TeamsScreen({super.key, required this.leagueId});
+  const TeamsScreen({super.key, required this.leagueId});
 
   @override
-  _TeamsScreenState createState() => _TeamsScreenState();
+  TeamsScreenState createState() => TeamsScreenState();
 }
 
-class _TeamsScreenState extends State<TeamsScreen> {
+class TeamsScreenState extends State<TeamsScreen> {
   late Future<TeamsData> futureTeamsData;
   late TextEditingController _searchController;
   List<Result> teams = [];

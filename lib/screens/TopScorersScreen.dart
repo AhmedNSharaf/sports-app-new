@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:sports_app/data/models/TopScorersData.dart';
 import 'package:sports_app/data/reposetories/TopScorersRepo.dart';
 import 'package:sports_app/utils/colors.dart';
-import 'package:sports_app/widgets/drawer.dart';
+import 'package:sports_app/screens/drawer.dart';
 
 class TopScorersScreen extends StatefulWidget {
   final int leagueId;
 
-  TopScorersScreen({super.key, required this.leagueId});
+  const TopScorersScreen({super.key, required this.leagueId});
 
   @override
-  _TopScorersScreenState createState() => _TopScorersScreenState();
+  TopScorersScreenState createState() => TopScorersScreenState();
 }
 
-class _TopScorersScreenState extends State<TopScorersScreen> {
+class TopScorersScreenState extends State<TopScorersScreen> {
   late Future<TopScorersData> futureTopScorersData;
 
   @override
@@ -67,7 +67,7 @@ class _TopScorersScreenState extends State<TopScorersScreen> {
                     backgroundColor: thirdColor,
                     child: Text(
                       (index + 1).toString(),
-                      style: TextStyle(color: secondaryColor),
+                      style: const TextStyle(color: secondaryColor),
                     ),
                   ),
                   title: Text(

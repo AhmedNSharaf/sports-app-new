@@ -4,7 +4,7 @@ import 'package:sports_app/data/reposetories/LeagusRepo.dart';
 import 'package:sports_app/screens/TeamsScreen.dart';
 import 'package:sports_app/screens/TopScorersScreen.dart';
 import 'package:sports_app/utils/colors.dart';
-import 'package:sports_app/widgets/drawer.dart';
+import 'package:sports_app/screens/drawer.dart';
 
 class LeaguesScreen extends StatefulWidget {
   final int countryKey;
@@ -12,10 +12,10 @@ class LeaguesScreen extends StatefulWidget {
   LeaguesScreen({super.key, required this.countryKey});
 
   @override
-  _LeaguesScreenState createState() => _LeaguesScreenState();
+  LeaguesScreenState createState() => LeaguesScreenState();
 }
 
-class _LeaguesScreenState extends State<LeaguesScreen> {
+class LeaguesScreenState extends State<LeaguesScreen> {
   late Future<LeagueData> futureLeaguesData;
 
   @override
@@ -36,12 +36,21 @@ class _LeaguesScreenState extends State<LeaguesScreen> {
             },
             child: Scaffold(
               appBar: AppBar(
+                iconTheme: const IconThemeData(color: secondaryColor),
                 leading: IconButton(
                   icon: const Icon(Icons.arrow_back, color: secondaryColor),
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
                 ),
+                actions: [
+                  IconButton(
+                    icon: const Icon(Icons.menu, color: secondaryColor),
+                    onPressed: () {
+                      Scaffold.of(context).openDrawer();
+                    },
+                  ),
+                ],
                 backgroundColor: primaryColor,
                 centerTitle: true,
                 title: const Text(
@@ -84,12 +93,21 @@ class _LeaguesScreenState extends State<LeaguesScreen> {
 
       backgroundColor: primaryColor,
       appBar: AppBar(
+        iconTheme: const IconThemeData(color: secondaryColor),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: secondaryColor),
           onPressed: () {
             Navigator.of(context).pop();
           },
         ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.menu, color: secondaryColor),
+            onPressed: () {
+              Scaffold.of(context).openDrawer();
+            },
+          ),
+        ],
         backgroundColor: primaryColor,
         centerTitle: true,
         title: const Text(

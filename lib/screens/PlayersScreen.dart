@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:sports_app/data/models/PlayersData.dart';
 import 'package:sports_app/data/reposetories/PlayersRepo.dart';
 import 'package:sports_app/utils/colors.dart';
-import 'package:sports_app/widgets/drawer.dart';
+import 'package:sports_app/screens/drawer.dart';
 import 'package:share_plus/share_plus.dart';
 
 class PlayersScreen extends StatefulWidget {
   final int teamId;
 
-  PlayersScreen({super.key, required this.teamId});
+  const PlayersScreen({super.key, required this.teamId});
 
   @override
-  _PlayersScreenState createState() => _PlayersScreenState();
+  PlayersScreenState createState() => PlayersScreenState();
 }
 
-class _PlayersScreenState extends State<PlayersScreen> {
+class PlayersScreenState extends State<PlayersScreen> {
   late Future<PlayersData> futurePlayersData;
   late TextEditingController _searchController;
   List<Result> players = [];
@@ -62,7 +62,7 @@ class _PlayersScreenState extends State<PlayersScreen> {
           backgroundColor: primaryColor,
           title: Text(
             player.playerName,
-            style: TextStyle(color: secondaryColor),
+            style: const TextStyle(color: secondaryColor),
           ),
           content: Column(
             mainAxisSize: MainAxisSize.min,
@@ -82,60 +82,60 @@ class _PlayersScreenState extends State<PlayersScreen> {
               const SizedBox(height: 10),
               Text(
                 'Player Number: ${player.playerNumber ?? 'N/A'}',
-                style: TextStyle(color: secondaryColor),
+                style: const TextStyle(color: secondaryColor),
               ),
               Text(
                 'Country: ${player.playerCountry ?? 'N/A'}',
-                style: TextStyle(color: secondaryColor),
+                style: const TextStyle(color: secondaryColor),
               ),
               Text(
                 'Position: ${player.playerType}',
-                style: TextStyle(color: secondaryColor),
+                style: const TextStyle(color: secondaryColor),
               ),
               Text(
                 'Age: ${player.playerAge ?? 'N/A'}',
-                style: TextStyle(color: secondaryColor),
+                style: const TextStyle(color: secondaryColor),
               ),
               Row(
                 children: [
                   Container(
                     color: Colors.yellow,
-                    child: SizedBox(
+                    child: const SizedBox(
                       height: 18,
                       width: 13,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 5,
                   ),
                   Text(
                     'Yellow Cards: ${player.playerYellowCards ?? 'N/A'}',
-                    style: TextStyle(color: secondaryColor),
+                    style: const TextStyle(color: secondaryColor),
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 3,
               ),
               Row(
                 children: [
                   Container(
                     color: Colors.red,
-                    child: SizedBox(
+                    child: const SizedBox(
                       height: 18,
                       width: 13,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 5,
                   ),
                   Text(
                     'Red Cards: ${player.playerRedCards ?? 'N/A'}',
-                    style: TextStyle(color: secondaryColor),
+                    style: const TextStyle(color: secondaryColor),
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 3,
               ),
               Row(
@@ -146,16 +146,16 @@ class _PlayersScreenState extends State<PlayersScreen> {
                     width: 20,
                     child: Image.asset('assets/icons/goal.png'),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 2,
                   ),
                   Text(
                     'Goals: ${player.playerGoals ?? 'N/A'}',
-                    style: TextStyle(color: secondaryColor),
+                    style: const TextStyle(color: secondaryColor),
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 3,
               ),
               Row(
@@ -166,12 +166,12 @@ class _PlayersScreenState extends State<PlayersScreen> {
                     width: 20,
                     child: Image.asset('assets/icons/football.png'),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 2,
                   ),
                   Text(
                     'Assists: ${player.playerAssists ?? 'N/A'}',
-                    style: TextStyle(color: secondaryColor),
+                    style: const TextStyle(color: secondaryColor),
                   ),
                 ],
               ),
@@ -216,6 +216,14 @@ class _PlayersScreenState extends State<PlayersScreen> {
               Navigator.of(context).pop();
             },
           ),
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.menu, color: secondaryColor),
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+            ),
+          ],
           backgroundColor: primaryColor,
           centerTitle: true,
           title: const Text(

@@ -12,10 +12,10 @@ class TopScorersData {
   }
 
   Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['success'] = success;
-    _data['result'] = result.map((e) => e.toJson()).toList();
-    return _data;
+    final data = <String, dynamic>{};
+    data['success'] = success;
+    data['result'] = result.map((e) => e.toJson()).toList();
+    return data;
   }
 }
 
@@ -51,15 +51,15 @@ class Result {
   }
 
   Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['player_place'] = playerPlace;
-    _data['player_name'] = playerName;
-    _data['player_key'] = playerKey;
-    _data['team_name'] = teamName;
-    _data['team_key'] = teamKey;
-    _data['goals'] = goals;
-    _data['assists'] = assists;
-    _data['penalty_goals'] = penaltyGoals;
-    return _data;
+    final data = <String, dynamic>{};
+    data['player_place'] = playerPlace;
+    data['player_name'] = playerName;
+    data['player_key'] = playerKey;
+    data['team_name'] = teamName;
+    data['team_key'] = teamKey;
+    data['goals'] = goals;
+    data['assists'] = assists;
+    data['penalty_goals'] = penaltyGoals;
+    return data;
   }
 }

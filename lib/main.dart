@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:provider/provider.dart';
-import 'package:sports_app/screens/LoginScreen.dart';
 import 'package:sports_app/screens/countriesScreen.dart';
 import 'package:sports_app/screens/sports_category.dart';
-import 'package:sports_app/widgets/splash/splashScreenWidget.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,6 +14,7 @@ void main() async {
   const AndroidInitializationSettings initializationSettingsAndroid =
       AndroidInitializationSettings('@mipmap/ic_launcher');
 
+  // ignore: prefer_const_constructors
   final InitializationSettings initializationSettings = InitializationSettings(
     android: initializationSettingsAndroid,
   );
@@ -50,17 +49,19 @@ void main() async {
       providers: [
         ChangeNotifierProvider(create: (_) => LocationProvider()),
       ],
-      child: MyApp(),
+      child: const MyApp(),
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Splashscreen(),
+      home: CategoryScreen(),
     );
   }
 }
