@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:provider/provider.dart';
-import 'package:sports_app/screens/countriesScreen.dart';
-import 'package:sports_app/screens/sports_category.dart';
+import 'package:sports_app/screens/splashScreenWidget.dart';
+import 'package:sports_app/widgets/countries/location_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -61,7 +61,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: CategoryScreen(),
+      home: Splashscreen(),
     );
   }
 }

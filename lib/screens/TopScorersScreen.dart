@@ -30,20 +30,7 @@ class TopScorersScreenState extends State<TopScorersScreen> {
           AppDrawer(phoneNumber: '1234567890'), // Pass user phone number here
 
       backgroundColor: primaryColor,
-      // appBar: AppBar(
-      //   leading: IconButton(
-      //     icon: const Icon(Icons.arrow_back, color: secondaryColor),
-      //     onPressed: () {
-      //       Navigator.of(context).pop();
-      //     },
-      //   ),
-      //   backgroundColor: primaryColor,
-      //   centerTitle: true,
-      //   title: const Text(
-      //     'Top Scorers',
-      //     style: TextStyle(color: secondaryColor, fontWeight: FontWeight.bold),
-      //   ),
-      // ),
+      
       body: FutureBuilder<TopScorersData>(
         future: futureTopScorersData,
         builder: (context, snapshot) {

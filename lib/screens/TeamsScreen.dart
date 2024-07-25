@@ -19,6 +19,7 @@ class TeamsScreenState extends State<TeamsScreen> {
   late TextEditingController _searchController;
   List<Result> teams = [];
   List<Result> filteredTeams = [];
+  bool _showClearIcon = false;
 
   @override
   void initState() {
@@ -30,6 +31,12 @@ class TeamsScreenState extends State<TeamsScreen> {
       setState(() {
         teams = data.result;
         filteredTeams = teams;
+      });
+    });
+
+    _searchController.addListener(() {
+      setState(() {
+        _showClearIcon = _searchController.text.isNotEmpty;
       });
     });
   }
@@ -58,7 +65,6 @@ class TeamsScreenState extends State<TeamsScreen> {
     return Scaffold(
       drawer:
           AppDrawer(phoneNumber: '1234567890'), // Pass user phone number here
-
       backgroundColor: primaryColor,
       body: GestureDetector(
         onTap: () {
@@ -68,20 +74,36 @@ class TeamsScreenState extends State<TeamsScreen> {
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: TextField(
-                controller: _searchController,
-                decoration: InputDecoration(
-                  hintText: 'Search for a team',
-                  hintStyle: const TextStyle(color: secondaryColor),
-                  prefixIcon: const Icon(Icons.search, color: secondaryColor),
-                  filled: true,
-                  fillColor: thirdColor,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide.none,
+              child: Stack(
+                alignment: Alignment.centerRight,
+                children: [
+                  TextField(
+                    controller: _searchController,
+                    style: const TextStyle(
+                        color: secondaryColor), // Change text color here
+                    decoration: InputDecoration(
+                      hintText: 'Search for a team',
+                      hintStyle: const TextStyle(color: secondaryColor),
+                      prefixIcon:
+                          const Icon(Icons.search, color: secondaryColor),
+                      filled: true,
+                      fillColor: thirdColor,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: BorderSide.none,
+                      ),
+                    ),
+                    onChanged: _filterTeams,
                   ),
-                ),
-                onChanged: _filterTeams,
+                  if (_showClearIcon)
+                    IconButton(
+                      icon: const Icon(Icons.clear, color: secondaryColor),
+                      onPressed: () {
+                        _searchController.clear();
+                        _filterTeams('');
+                      },
+                    ),
+                ],
               ),
             ),
             Expanded(
