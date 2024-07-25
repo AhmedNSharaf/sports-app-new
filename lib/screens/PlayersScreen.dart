@@ -85,6 +85,7 @@ class PlayersScreenState extends State<PlayersScreen> {
             icon: const Icon(Icons.arrow_back, color: secondaryColor),
             onPressed: () {
               Navigator.of(context).pop();
+              FocusScope.of(context).unfocus();
             },
           ),
           actions: [
