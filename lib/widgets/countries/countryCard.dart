@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sports_app/data/models/CountriesData.dart';
+import 'package:sports_app/generated/l10n.dart';
 import 'package:sports_app/utils/colors.dart';
 import 'package:sports_app/screens/leagusScreen.dart';
 
@@ -17,7 +18,8 @@ class CountryCard extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => LeaguesScreen(countryKey: country.countryKey),
+              builder: (context) =>
+                  LeaguesScreen(countryKey: country.countryKey),
             ),
           );
         } else {
@@ -25,25 +27,31 @@ class CountryCard extends StatelessWidget {
             context: context,
             builder: (context) => AlertDialog(
               backgroundColor: thirdColor,
-              title: const Text(
-                'Coming Soon',
+              title: Text(
+                S.of(context).dialogTitle,
                 style: TextStyle(
-                    fontSize: 25, fontWeight: FontWeight.bold, color: primaryColor),
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                    color: primaryColor),
               ),
-              content: const Text(
-                'Palestine leagues are coming soon.',
+              content: Text(
+                S.of(context).palestineDialogContent,
                 style: TextStyle(
-                    fontSize: 15, color: secondaryColor, fontWeight: FontWeight.bold),
+                    fontSize: 15,
+                    color: secondaryColor,
+                    fontWeight: FontWeight.bold),
               ),
               actions: [
                 TextButton(
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  child: const Text(
-                    'OK',
+                  child: Text(
+                    S.of(context).dialogAction,
                     style: TextStyle(
-                        fontSize: 25, fontWeight: FontWeight.bold, color: primaryColor),
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        color: primaryColor),
                   ),
                 ),
               ],
@@ -60,7 +68,7 @@ class CountryCard extends StatelessWidget {
             color: isCurrentLocation
                 ? Colors.green // Special color for current location
                 : Colors.grey, // Default color
-            width: 2,
+            width: isCurrentLocation ? 4 : 2,
           ),
         ),
         child: Column(
@@ -71,8 +79,8 @@ class CountryCard extends StatelessWidget {
                 country.countryName != 'Israel')
               Image.network(
                 country.countryLogo!,
-                height: 50,
-                width: 50,
+                height: 70,
+                width: 70,
                 errorBuilder: (context, error, stackTrace) {
                   return const Icon(Icons.error, color: secondaryColor);
                 },
@@ -81,8 +89,8 @@ class CountryCard extends StatelessWidget {
               const Icon(Icons.flag, color: secondaryColor, size: 50),
             const SizedBox(height: 10),
             if (country.countryName == 'Israel')
-              const Text(
-                'Free\nPalestine',
+              Text(
+                S.of(context).palestineCardContent,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 20,
@@ -95,7 +103,9 @@ class CountryCard extends StatelessWidget {
                 country.countryName,
                 textAlign: TextAlign.center,
                 style: const TextStyle(
-                    fontSize: 16, color: secondaryColor, fontWeight: FontWeight.bold),
+                    fontSize: 16,
+                    color: secondaryColor,
+                    fontWeight: FontWeight.bold),
               ),
           ],
         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sports_app/generated/l10n.dart';
 import 'package:sports_app/utils/colors.dart';
 import 'package:sports_app/widgets/category/category_widget.dart';
 import 'package:sports_app/screens/drawer.dart';
@@ -11,13 +12,13 @@ class CategoryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: primaryColor,
-      drawer: AppDrawer(phoneNumber: '1234567890'),
+      drawer: AppDrawer(phoneNumber: S.of(context).drawerPhone),
       appBar: AppBar(
         backgroundColor: primaryColor,
         scrolledUnderElevation: 0,
         centerTitle: true,
-        title: const Text(
-          'Sports Category',
+        title: Text(
+          S.of(context).categoryTitle,
           style: TextStyle(color: secondaryColor, fontWeight: FontWeight.bold),
         ),
         iconTheme: const IconThemeData(color: secondaryColor),

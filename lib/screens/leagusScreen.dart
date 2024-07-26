@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sports_app/data/models/LeagueData.dart';
 import 'package:sports_app/data/reposetories/LeagusRepo.dart';
+import 'package:sports_app/generated/l10n.dart';
 import 'package:sports_app/screens/TeamsScreen.dart';
 import 'package:sports_app/screens/TopScorersScreen.dart';
 import 'package:sports_app/utils/colors.dart';
@@ -53,11 +54,10 @@ class LeaguesScreenState extends State<LeaguesScreen> {
                 ],
                 backgroundColor: primaryColor,
                 centerTitle: true,
-                title: const Text(
-                  'League Details',
+                title:  Text(S.of(context).LeagueDetails,
                   style: TextStyle(color: secondaryColor),
                 ),
-                bottom: const TabBar(
+                bottom:  TabBar(
                   labelStyle:
                       TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   labelColor: Colors
@@ -67,8 +67,8 @@ class LeaguesScreenState extends State<LeaguesScreen> {
                   unselectedLabelStyle:
                       TextStyle(fontSize: 15, color: Colors.grey),
                   tabs: [
-                    Tab(text: 'Teams'),
-                    Tab(text: 'Top Scorers'),
+                    Tab(text: S.of(context).Teams),
+                    Tab(text: S.of(context).TopScorers),
                   ],
                 ),
               ),
@@ -89,7 +89,7 @@ class LeaguesScreenState extends State<LeaguesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer:
-          AppDrawer(phoneNumber: '1234567890'), // Pass user phone number here
+          AppDrawer(phoneNumber: S.of(context).drawerPhone), // Pass user phone number here
 
       backgroundColor: primaryColor,
       appBar: AppBar(
@@ -110,8 +110,8 @@ class LeaguesScreenState extends State<LeaguesScreen> {
         ],
         backgroundColor: primaryColor,
         centerTitle: true,
-        title: const Text(
-          'Leagues',
+        title:  Text(
+          S.of(context).Leagues,
           style: TextStyle(color: secondaryColor, fontWeight: FontWeight.bold),
         ),
       ),
@@ -121,15 +121,15 @@ class LeaguesScreenState extends State<LeaguesScreen> {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
-            return const Center(
+            return  Center(
                 child: Text(
-              'Failed to load leagues data',
+              S.of(context).Failedtoloadleaguesdata,
               style: TextStyle(color: secondaryColor),
             ));
           } else if (!snapshot.hasData || snapshot.data!.result.isEmpty) {
-            return const Center(
+            return  Center(
                 child: Text(
-              'No leagues available',
+              S.of(context).NoLeaguesAvailable,
               style: TextStyle(color: secondaryColor),
             ));
           } else {
@@ -148,7 +148,10 @@ class LeaguesScreenState extends State<LeaguesScreen> {
                   color: thirdColor,
                   elevation: 5,
                   child: InkWell(
-                    onTap: () => _onLeagueSelected(league.leagueKey),
+                    onTap: () {
+                      _onLeagueSelected(league.leagueKey);
+                      FocusScope.of(context).unfocus();
+                    },
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

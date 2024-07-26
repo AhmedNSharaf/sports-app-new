@@ -1,6 +1,7 @@
 import 'dart:async'; // For Timer
 import 'package:flutter/material.dart'; // Flutter's material design library
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'; // Package for smooth page indicators
+import 'package:sports_app/generated/l10n.dart';
 import 'package:sports_app/screens/LoginScreen.dart'; // Import the LoginScreen
 import 'package:sports_app/utils/colors.dart'; // Import custom colors used in the app
 
@@ -54,18 +55,18 @@ class OnboardingScreenState extends State<OnboardingScreen> {
               controller: _controller, // Controller to manage the PageView
               children: [
                 buildPage(
-                  title: "Welcome to Sports App",
-                  description: "Track your favorite sports and teams.",
+                  title: S.of(context).OnBoardingTitle1,
+                  description: S.of(context).OnBoardingbody1,
                   imagePath: 'assets/icons/balls-sports.png',
                 ),
                 buildPage(
-                  title: "Live Scores",
-                  description: "Get live updates and scores from ongoing matches.",
+                  title: S.of(context).OnBoardingTitle2,
+                  description: S.of(context).OnBoardingbody2,
                   imagePath: 'assets/icons/score.png',
                 ),
                 buildPage(
-                  title: "Latest News",
-                  description: "Stay updated with the latest sports news.",
+                  title: S.of(context).OnBoardingTitle3,
+                  description: S.of(context).OnBoardingbody3,
                   imagePath: 'assets/icons/sports-news.png',
                 ),
               ],
@@ -86,8 +87,8 @@ class OnboardingScreenState extends State<OnboardingScreen> {
                 backgroundColor: thirdColor, // Background color of the button
                 foregroundColor: secondaryColor, // Foreground (text) color of the button
               ),
-              child: const Text(
-                "Skip",
+              child:  Text(
+                S.of(context).Skip,
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17), // Style of the button text
               ),
             ),

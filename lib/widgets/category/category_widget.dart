@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sports_app/generated/l10n.dart';
 import 'package:sports_app/screens/countriesScreen.dart';
 import 'package:sports_app/utils/colors.dart';
 import 'package:sports_app/widgets/category/sports_categorywidget.dart';
@@ -21,15 +22,14 @@ class CategoryWidget extends StatelessWidget {
             context: context,
             builder: (context) => AlertDialog(
               backgroundColor: thirdColor,
-              title: const Text(
-                'Coming Soon',
+              title:  Text(S.of(context).dialogTitle,
                 style: TextStyle(
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
                     color: primaryColor),
               ),
-              content: const Text(
-                'This feature is coming soon.',
+              content:  Text(
+                S.of(context).dialogContent,
                 style: TextStyle(
                     fontSize: 15,
                     color: secondaryColor,
@@ -40,8 +40,8 @@ class CategoryWidget extends StatelessWidget {
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  child: const Text(
-                    'OK',
+                  child:  Text(S.of(context).dialogAction
+                    ,
                     style: TextStyle(
                         fontSize: 25,
                         fontWeight: FontWeight.bold,

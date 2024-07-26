@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
+import 'package:sports_app/generated/l10n.dart';
+import 'package:sports_app/screens/CategoryScreen.dart';
 import 'package:sports_app/screens/splashScreenWidget.dart';
 import 'package:sports_app/widgets/countries/location_provider.dart';
 
@@ -39,7 +42,7 @@ void main() async {
   await flutterLocalNotificationsPlugin.show(
     0,
     'Welcome',
-    'Local notifications are now set up!',
+    'Hello Everybody!',
     platformChannelSpecifics,
     payload: 'item x',
   );
@@ -59,7 +62,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      locale: const Locale('ar'),
+      localizationsDelegates: [
+        S.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: S.delegate.supportedLocales,
       debugShowCheckedModeBanner: false,
       home: Splashscreen(),
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sports_app/generated/l10n.dart';
 import 'package:sports_app/utils/colors.dart';
 
 class CustomListItem extends StatefulWidget {
@@ -51,13 +52,13 @@ class _CustomListItemState extends State<CustomListItem> {
       context: context,
       builder: (context) => AlertDialog(
         backgroundColor: thirdColor, // Set the background color here
-        title: const Text(
-          'Coming Soon',
+        title:  Text(
+          S.of(context).dialogTitle,
           style: TextStyle(
               fontSize: 25, fontWeight: FontWeight.bold, color: primaryColor),
         ),
-        content: const Text(
-          'This feature is coming soon.',
+        content:  Text(
+          S.of(context).dialogContent,
           style: TextStyle(
               fontSize: 15,
               color: secondaryColor, // Set the text color
@@ -68,8 +69,7 @@ class _CustomListItemState extends State<CustomListItem> {
             onPressed: () {
               Navigator.of(context).pop();
             },
-            child: const Text(
-              'OK',
+            child:  Text(S.of(context).dialogAction,
               style: TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.bold,

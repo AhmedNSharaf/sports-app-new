@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sports_app/generated/l10n.dart';
 import 'package:sports_app/screens/LoginScreen.dart';
 import 'package:sports_app/utils/colors.dart';
 import 'package:sports_app/widgets/Drawer/CustomListWidget.dart';
@@ -23,7 +24,7 @@ class _AppDrawerState extends State<AppDrawer> {
             // Drawer Header
             UserAccountsDrawerHeader(
               accountName: widget.phoneNumber != null
-                  ? Text('Phone: ${widget.phoneNumber}')
+                  ? Text('${S.of(context).Phone}: ${widget.phoneNumber}')
                   : const Text('Guest'),
               accountEmail: null,
               currentAccountPicture: const CircleAvatar(
@@ -34,17 +35,17 @@ class _AppDrawerState extends State<AppDrawer> {
               ),
             ),
             // Tab Bar
-            const TabBar(
+            TabBar(
               labelColor: primaryColor,
               indicatorColor: primaryColor,
               tabs: [
                 Tab(
                   icon: Icon(Icons.home),
-                  text: 'Home',
+                  text: S.of(context).homeTab,
                 ),
                 Tab(
                   icon: Icon(Icons.person),
-                  text: 'My Account',
+                  text: S.of(context).myAccountTap,
                 ),
               ],
             ),
@@ -64,8 +65,8 @@ class _AppDrawerState extends State<AppDrawer> {
                               child:
                                   Image.asset('assets/icons/home-button.png')),
                         ),
-                        title: const Text(
-                          'Home',
+                        title: Text(
+                          S.of(context).homeTab,
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         onTap: () {
@@ -75,47 +76,47 @@ class _AppDrawerState extends State<AppDrawer> {
                       ),
                       CustomListItem(
                         imagePath: 'assets/icons/facebook.png',
-                        text: 'Facebook',
+                        text: S.of(context).facebookName,
                       ),
                       const Spacer(),
                       CustomListItem(
                         imagePath: 'assets/icons/youtube.png',
-                        text: 'Youtube',
+                        text: S.of(context).youtubeName,
                       ),
                       const Spacer(),
                       CustomListItem(
                         imagePath: 'assets/icons/instagram.png',
-                        text: 'Instagram',
+                        text: S.of(context).instagramName,
                       ),
                       const Spacer(),
                       CustomListItem(
                         imagePath: 'assets/icons/logo.png',
-                        text: 'WhatsApp',
+                        text: S.of(context).whatsAppName,
                       ),
                       const Spacer(),
                       CustomListItem(
                         imagePath: 'assets/icons/twitter.png',
-                        text: 'X',
+                        text: S.of(context).XName,
                       ),
                       const Spacer(),
                       CustomListItem(
                         imagePath: 'assets/icons/telegram (1).png',
-                        text: 'Telegram',
+                        text: S.of(context).TelegramName,
                       ),
                       const Spacer(),
                       CustomListItem(
                         imagePath: 'assets/icons/next.png',
-                        text: 'Share App',
+                        text: S.of(context).ShareAppName,
                       ),
                       const Spacer(),
                       CustomListItem(
                         imagePath: 'assets/icons/contact-us (1).png',
-                        text: 'Contact Us',
+                        text: S.of(context).ContactUsName,
                       ),
                       const Spacer(),
                       CustomListItem(
                         imagePath: 'assets/icons/privacy-policy.png',
-                        text: 'Privacy Polici',
+                        text: S.of(context).PrivacyPoliciName,
                       ),
                       const Spacer(
                         flex: 15,
@@ -129,7 +130,7 @@ class _AppDrawerState extends State<AppDrawer> {
                         leading: const CircleAvatar(
                             backgroundColor: secondaryColor,
                             child: Icon(Icons.settings)),
-                        title: const Text('Settings'),
+                        title: Text(S.of(context).SettingsName),
                         onTap: () {
                           // Navigate to Settings
                           Navigator.pop(context); // Close the drawer
@@ -139,8 +140,8 @@ class _AppDrawerState extends State<AppDrawer> {
                         leading: const CircleAvatar(
                             backgroundColor: secondaryColor,
                             child: Icon(Icons.logout)),
-                        title: const Text(
-                          'Log Out',
+                        title: Text(
+                          S.of(context).LogOutName,
                           style: TextStyle(color: primaryColor, fontSize: 20),
                         ),
                         onTap: () {

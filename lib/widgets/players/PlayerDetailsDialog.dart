@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sports_app/data/models/PlayersData.dart';
+import 'package:sports_app/generated/l10n.dart';
 import 'package:sports_app/utils/colors.dart';
 import 'package:share_plus/share_plus.dart';
 
@@ -33,19 +34,19 @@ class PlayerDetailsDialog extends StatelessWidget {
             const Icon(Icons.person, color: secondaryColor, size: 100),
           const SizedBox(height: 10),
           Text(
-            'Player Number: ${player.playerNumber ?? 'N/A'}',
+            '${S.of(context).playerNumber}: ${player.playerNumber ?? 'N/A'}',
             style: const TextStyle(color: secondaryColor),
           ),
           Text(
-            'Country: ${player.playerCountry ?? 'N/A'}',
+            '${S.of(context).PlayerCountry}: ${player.playerCountry ?? 'N/A'}',
             style: const TextStyle(color: secondaryColor),
           ),
           Text(
-            'Position: ${player.playerType}',
+            '${S.of(context).PlayerPosition}: ${player.playerType}',
             style: const TextStyle(color: secondaryColor),
           ),
           Text(
-            'Age: ${player.playerAge ?? 'N/A'}',
+            '${S.of(context).PlayerAge}: ${player.playerAge ?? 'N/A'}',
             style: const TextStyle(color: secondaryColor),
           ),
           Row(
@@ -59,7 +60,7 @@ class PlayerDetailsDialog extends StatelessWidget {
               ),
               const SizedBox(width: 5),
               Text(
-                'Yellow Cards: ${player.playerYellowCards ?? 'N/A'}',
+                '${S.of(context).YellowCards}: ${player.playerYellowCards ?? 'N/A'}',
                 style: const TextStyle(color: secondaryColor),
               ),
             ],
@@ -76,7 +77,7 @@ class PlayerDetailsDialog extends StatelessWidget {
               ),
               const SizedBox(width: 5),
               Text(
-                'Red Cards: ${player.playerRedCards ?? 'N/A'}',
+                '${S.of(context).RedCards}: ${player.playerRedCards ?? 'N/A'}',
                 style: const TextStyle(color: secondaryColor),
               ),
             ],
@@ -92,7 +93,7 @@ class PlayerDetailsDialog extends StatelessWidget {
               ),
               const SizedBox(width: 2),
               Text(
-                'Goals: ${player.playerGoals ?? 'N/A'}',
+                '${S.of(context).Goals}: ${player.playerGoals ?? 'N/A'}',
                 style: const TextStyle(color: secondaryColor),
               ),
             ],
@@ -108,7 +109,7 @@ class PlayerDetailsDialog extends StatelessWidget {
               ),
               const SizedBox(width: 2),
               Text(
-                'Assists: ${player.playerAssists ?? 'N/A'}',
+                '${S.of(context).Assists}: ${player.playerAssists ?? 'N/A'}',
                 style: const TextStyle(color: secondaryColor),
               ),
             ],
@@ -117,15 +118,15 @@ class PlayerDetailsDialog extends StatelessWidget {
       ),
       actions: <Widget>[
         TextButton(
-          child: const Text('Share'),
+          child: Text(S.of(context).Share),
           onPressed: () {
             final shareContent =
-                'Player Name : ${player.playerName} \nFrom : ${player.playerCountry} \nplays For : ${player.teamName}';
+                '${S.of(context).PlayerName} : ${player.playerName} \nFrom : ${player.playerCountry} \nplays For : ${player.teamName}';
             Share.share(shareContent);
           },
         ),
         TextButton(
-          child: const Text('Close'),
+          child: Text(S.of(context).Close),
           onPressed: () {
             Navigator.of(context).pop();
             FocusScope.of(context).unfocus();

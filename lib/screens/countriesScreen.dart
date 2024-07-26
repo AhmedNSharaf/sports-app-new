@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sports_app/data/models/CountriesData.dart';
 import 'package:sports_app/data/reposetories/CountriesRepo.dart';
+import 'package:sports_app/generated/l10n.dart';
 import 'package:sports_app/utils/colors.dart';
 import 'package:sports_app/screens/drawer.dart';
 import 'package:sports_app/widgets/countries/CountriesAppBar.dart';
@@ -58,8 +59,9 @@ class _CountriesScreenState extends State<CountriesScreen> {
   Widget build(BuildContext context) {
     final locationProvider = Provider.of<LocationProvider>(context);
     return Scaffold(
-      drawer:
-          AppDrawer(phoneNumber: '1234567890'), // Pass user phone number here
+      drawer: AppDrawer(
+          phoneNumber:
+              S.of(context).drawerPhone), // Pass user phone number here
       backgroundColor: primaryColor,
       appBar: CountriesAppBar(
         onLocationButtonPressed: () async {
@@ -87,14 +89,14 @@ class _CountriesScreenState extends State<CountriesScreen> {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return const Center(child: CircularProgressIndicator());
                 } else if (snapshot.hasError) {
-                  return const Center(
+                  return Center(
                     child: Text(
-                      'Failed to load countries data',
+                      S.of(context).Failedtoloadcountriesdata,
                       style: TextStyle(color: secondaryColor),
                     ),
                   );
                 } else if (!snapshot.hasData || snapshot.data!.result.isEmpty) {
-                  return const Center(child: Text('No countries available'));
+                  return  Center(child: Text(S.of(context).NoCountriesAvailable));
                 } else {
                   countries = snapshot.data!.result;
                   return GridView.builder(

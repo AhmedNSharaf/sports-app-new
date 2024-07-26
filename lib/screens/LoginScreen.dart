@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sports_app/generated/l10n.dart';
 import 'package:sports_app/screens/RegisterScreen.dart';
 import 'package:sports_app/screens/CategoryScreen.dart';
 import 'package:sports_app/utils/colors.dart';
@@ -100,9 +101,9 @@ class _LoginScreenState extends State<LoginScreen>
                 //     ),
                 //   ),
                 // ),
-                const SizedBox(
+                SizedBox(
                   child: Text(
-                    'Login',
+                    S.of(context).Login,
                     style: TextStyle(
                       color: secondaryColor,
                       fontSize: 30,
@@ -115,7 +116,7 @@ class _LoginScreenState extends State<LoginScreen>
                   child: TextField(
                     style: const TextStyle(color: secondaryColor),
                     controller: _phoneNumberController,
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                         prefixIcon: Icon(
                           Icons.phone,
                         ),
@@ -129,7 +130,7 @@ class _LoginScreenState extends State<LoginScreen>
                           ),
                           borderRadius: BorderRadius.all(Radius.circular(25.0)),
                         ),
-                        labelText: 'Phone Number',
+                        labelText: S.of(context).phoneNumber,
                         labelStyle: TextStyle(color: secondaryColor)),
                     keyboardType: TextInputType.number,
                     keyboardAppearance: Brightness.dark,
@@ -141,7 +142,7 @@ class _LoginScreenState extends State<LoginScreen>
                 TextField(
                   style: const TextStyle(color: secondaryColor),
                   controller: _otpController,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: thirdColor),
                       ),
@@ -149,7 +150,7 @@ class _LoginScreenState extends State<LoginScreen>
                         borderSide: BorderSide(color: secondaryColor),
                         borderRadius: BorderRadius.all(Radius.circular(25.0)),
                       ),
-                      labelText: 'OTP',
+                      labelText: S.of(context).OTP,
                       labelStyle: TextStyle(color: secondaryColor)),
                   keyboardType: TextInputType.number,
                   keyboardAppearance: Brightness.dark,
@@ -164,11 +165,11 @@ class _LoginScreenState extends State<LoginScreen>
                               secondaryColor, // Foreground (text) color
                         ),
                         onPressed: _verifyOtp,
-                        child: const SizedBox(
-                          width: 100,
+                        child: SizedBox(
+                          width: 200,
                           child: Center(
                             child: Text(
-                              'Verify OTP',
+                              S.of(context).VerifyOTP,
                               style: TextStyle(fontSize: 20),
                             ),
                           ),
@@ -181,11 +182,11 @@ class _LoginScreenState extends State<LoginScreen>
                     foregroundColor: secondaryColor, // Foreground (text) color
                   ),
                   onPressed: _generateOtp,
-                  child: const SizedBox(
-                    width: 150,
+                  child: SizedBox(
+                    width: 250,
                     child: Center(
                       child: Text(
-                        'Generate OTP',
+                        S.of(context).GenerateOTP,
                         style: TextStyle(fontSize: 20),
                       ),
                     ),
@@ -198,8 +199,8 @@ class _LoginScreenState extends State<LoginScreen>
                     foregroundColor: secondaryColor, // Foreground (text) color
                   ),
                   onPressed: _googleLogin,
-                  child: const SizedBox(
-                    width: 200,
+                  child: SizedBox(
+                    width: 300,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -211,7 +212,7 @@ class _LoginScreenState extends State<LoginScreen>
                           width: 10,
                         ),
                         Text(
-                          'Login with Google',
+                          S.of(context).LoginwithGoogle,
                           style: TextStyle(fontSize: 20),
                         ),
                       ],
@@ -221,8 +222,8 @@ class _LoginScreenState extends State<LoginScreen>
                 Row(
                   children: [
                     const Spacer(),
-                    const Text(
-                      'Don\'t have an account ?',
+                    Text(
+                      S.of(context).Donthavanaccount,
                       style: TextStyle(color: secondaryColor, fontSize: 15),
                     ),
                     TextButton(
@@ -231,8 +232,8 @@ class _LoginScreenState extends State<LoginScreen>
                             builder: (context) => const Registerscreen(),
                           ));
                         },
-                        child: const Text(
-                          'Register',
+                        child: Text(
+                          S.of(context).Register,
                           style: TextStyle(color: thirdColor, fontSize: 18),
                         ))
                   ],
@@ -252,8 +253,8 @@ class _LoginScreenState extends State<LoginScreen>
       context: context,
       builder: (context) => AlertDialog(
         backgroundColor: primaryColor,
-        title: const Text(
-          'Your OTP',
+        title: Text(
+          S.of(context).YourOTP,
           style: TextStyle(color: secondaryColor, fontSize: 25),
         ),
         content: Text(
@@ -263,8 +264,8 @@ class _LoginScreenState extends State<LoginScreen>
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text(
-              'OK',
+            child: Text(
+              S.of(context).dialogAction,
               style: TextStyle(color: secondaryColor, fontSize: 20),
             ),
           ),
@@ -295,10 +296,10 @@ class _LoginScreenState extends State<LoginScreen>
         context: context,
         builder: (context) => AlertDialog(
           backgroundColor: primaryColor,
-          title: const Row(
+          title: Row(
             children: [
               Text(
-                'Error',
+                S.of(context).Error,
                 style: TextStyle(color: Colors.red, fontSize: 25),
               ),
               SizedBox(
@@ -310,15 +311,15 @@ class _LoginScreenState extends State<LoginScreen>
               ),
             ],
           ),
-          content: const Text(
-            'Invalid OTP',
-            style:  TextStyle(color: secondaryColor, fontSize: 20),
+          content:  Text(
+            S.of(context).InvalidOTP,
+            style: TextStyle(color: secondaryColor, fontSize: 20),
           ),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: const Text(
-                'OK',
+              child:  Text(
+                S.of(context).dialogAction,
                 style: TextStyle(color: secondaryColor, fontSize: 20),
               ),
             ),

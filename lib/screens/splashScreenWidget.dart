@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:sports_app/generated/l10n.dart';
 import 'package:sports_app/screens/on_boarding_screen.dart';
 import 'package:sports_app/utils/colors.dart';
 
@@ -89,10 +90,10 @@ class _SplashscreenState extends State<Splashscreen>
                 const SizedBox(
                   height: 20,
                 ),
-                const Text(
-                  'Sports App',
+                 Text(
+                  S.of(context).SplashTitle,
                   style: TextStyle(
-                    color: Colors.white,
+                    color: secondaryColor,
                     fontSize: 30,
                     fontFamily: "Rubik",
                   ),

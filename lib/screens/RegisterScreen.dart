@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sports_app/generated/l10n.dart';
 import 'package:sports_app/utils/colors.dart';
 
 class Registerscreen extends StatelessWidget {
@@ -25,8 +26,8 @@ class Registerscreen extends StatelessWidget {
                   width: 180,
                   child: Image.asset('assets/icons/balls-sports.png'),
                 ),
-                const Text(
-                  'Register',
+                Text(
+                  S.of(context).Register,
                   style: TextStyle(
                     color: secondaryColor,
                     fontSize: 30,
@@ -35,7 +36,7 @@ class Registerscreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 Container(
-                  child: const TextField(
+                  child: TextField(
                     style: TextStyle(color: secondaryColor),
                     decoration: InputDecoration(
                         focusedBorder: OutlineInputBorder(
@@ -47,7 +48,7 @@ class Registerscreen extends StatelessWidget {
                           ),
                           borderRadius: BorderRadius.all(Radius.circular(25.0)),
                         ),
-                        labelText: 'Email',
+                        labelText: S.of(context).Email,
                         labelStyle: TextStyle(color: secondaryColor)),
                     keyboardType: TextInputType.number,
                   ),
@@ -55,7 +56,7 @@ class Registerscreen extends StatelessWidget {
                 const SizedBox(
                   height: 5,
                 ),
-                const TextField(
+                TextField(
                   style: TextStyle(color: secondaryColor),
                   decoration: InputDecoration(
                       focusedBorder: OutlineInputBorder(
@@ -65,7 +66,7 @@ class Registerscreen extends StatelessWidget {
                         borderSide: BorderSide(color: secondaryColor),
                         borderRadius: BorderRadius.all(Radius.circular(25.0)),
                       ),
-                      labelText: 'Password',
+                      labelText: S.of(context).Password,
                       labelStyle: TextStyle(color: secondaryColor)),
                   keyboardType: TextInputType.number,
                 ),
@@ -73,16 +74,16 @@ class Registerscreen extends StatelessWidget {
                 Row(
                   children: [
                     const Spacer(),
-                    const Text(
-                      'Have an account ?',
+                    Text(
+                      S.of(context).Havanaccount,
                       style: TextStyle(color: secondaryColor, fontSize: 20),
                     ),
                     TextButton(
                         onPressed: () {
                           Navigator.of(context).pop();
                         },
-                        child: const Text(
-                          'Login',
+                        child: Text(
+                          S.of(context).Login,
                           style: TextStyle(color: thirdColor, fontSize: 25),
                         ))
                   ],

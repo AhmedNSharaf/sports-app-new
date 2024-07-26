@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sports_app/data/models/PlayersData.dart';
 import 'package:sports_app/data/reposetories/PlayersRepo.dart';
+import 'package:sports_app/generated/l10n.dart';
 import 'package:sports_app/utils/colors.dart';
 import 'package:sports_app/screens/drawer.dart';
 import 'package:sports_app/widgets/players/PlayerCard.dart';
@@ -77,8 +78,9 @@ class PlayersScreenState extends State<PlayersScreen> {
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
-        drawer:
-            AppDrawer(phoneNumber: '1234567890'), // Pass user phone number here
+        drawer: AppDrawer(
+            phoneNumber:
+                S.of(context).drawerPhone), // Pass user phone number here
         backgroundColor: primaryColor,
         appBar: AppBar(
           leading: IconButton(
@@ -102,8 +104,8 @@ class PlayersScreenState extends State<PlayersScreen> {
           ],
           backgroundColor: primaryColor,
           centerTitle: true,
-          title: const Text(
-            'Players',
+          title: Text(
+            S.of(context).players,
             style:
                 TextStyle(color: secondaryColor, fontWeight: FontWeight.bold),
           ),
@@ -119,7 +121,7 @@ class PlayersScreenState extends State<PlayersScreen> {
                     controller: _searchController,
                     style: const TextStyle(color: secondaryColor),
                     decoration: InputDecoration(
-                      hintText: 'Search for a player',
+                      hintText: S.of(context).Searchforaplayer,
                       hintStyle: const TextStyle(color: secondaryColor),
                       prefixIcon:
                           const Icon(Icons.search, color: secondaryColor),
@@ -150,11 +152,12 @@ class PlayersScreenState extends State<PlayersScreen> {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return const Center(child: CircularProgressIndicator());
                   } else if (snapshot.hasError) {
-                    return const Center(
-                        child: Text('Failed to load players data'));
+                    return Center(
+                        child: Text(S.of(context).Failedtoloadplayersdata));
                   } else if (!snapshot.hasData ||
                       snapshot.data!.result.isEmpty) {
-                    return const Center(child: Text('No players available'));
+                    return Center(
+                        child: Text(S.of(context).Noplayersavailable));
                   } else {
                     if (players.isEmpty) {
                       players = snapshot.data!.result;

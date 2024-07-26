@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sports_app/data/models/TeamsData.dart';
 import 'package:sports_app/data/reposetories/TeamsRepo.dart';
+import 'package:sports_app/generated/l10n.dart';
 import 'package:sports_app/screens/PlayersScreen.dart';
 import 'package:sports_app/utils/colors.dart';
 import 'package:sports_app/screens/drawer.dart';
@@ -49,11 +50,10 @@ class TeamsScreenState extends State<TeamsScreen> {
 
   void _filterTeams(String query) {
     setState(() {
-      if (query.isEmpty) {
+      if (query.isEmpty) {          //query is text in search field
         filteredTeams = teams;
       } else {
-        filteredTeams = teams
-            .where((team) =>
+        filteredTeams = teams.where((team) =>
                 team.teamName!.toLowerCase().contains(query.toLowerCase()))
             .toList();
       }
@@ -64,7 +64,7 @@ class TeamsScreenState extends State<TeamsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer:
-          AppDrawer(phoneNumber: '1234567890'), // Pass user phone number here
+          AppDrawer(phoneNumber: S.of(context).drawerPhone), // Pass user phone number here
       backgroundColor: primaryColor,
       body: GestureDetector(
         onTap: () {
@@ -73,7 +73,7 @@ class TeamsScreenState extends State<TeamsScreen> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding:  EdgeInsets.all(8.0),
               child: Stack(
                 alignment: Alignment.centerRight,
                 children: [
@@ -82,7 +82,7 @@ class TeamsScreenState extends State<TeamsScreen> {
                     style: const TextStyle(
                         color: secondaryColor), // Change text color here
                     decoration: InputDecoration(
-                      hintText: 'Search for a team',
+                      hintText: S.of(context).Searchforateam,
                       hintStyle: const TextStyle(color: secondaryColor),
                       prefixIcon:
                           const Icon(Icons.search, color: secondaryColor),
@@ -113,11 +113,11 @@ class TeamsScreenState extends State<TeamsScreen> {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return const Center(child: CircularProgressIndicator());
                   } else if (snapshot.hasError) {
-                    return const Center(
-                        child: Text('Failed to load teams data'));
+                    return  Center(
+                        child: Text(S.of(context).Failedtoloadteamsdata));
                   } else if (!snapshot.hasData ||
                       snapshot.data!.result.isEmpty) {
-                    return const Center(child: Text('No teams available'));
+                    return  Center(child: Text(S.of(context).Noteamsavailable));
                   } else {
                     return GridView.builder(
                       gridDelegate:

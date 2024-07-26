@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sports_app/generated/l10n.dart';
 import 'package:sports_app/utils/colors.dart';
-import 'package:sports_app/screens/drawer.dart';
 
 class CountriesAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Function onLocationButtonPressed;
@@ -19,8 +19,8 @@ class CountriesAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       backgroundColor: primaryColor,
       centerTitle: true,
-      title: const Text(
-        'Countries',
+      title: Text(
+        S.of(context).countriesTitle, ///
         style: TextStyle(color: secondaryColor, fontWeight: FontWeight.bold),
       ),
       actions: [
