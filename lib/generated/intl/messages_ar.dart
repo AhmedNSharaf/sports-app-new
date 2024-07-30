@@ -99,8 +99,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "XName": MessageLookupByLibrary.simpleMessage("اكس"),
         "YellowCards": MessageLookupByLibrary.simpleMessage("الكروت الصفراء"),
         "YourOTP": MessageLookupByLibrary.simpleMessage("رقمك السرى المؤقت"),
-        "categoryTitle":
-            MessageLookupByLibrary.simpleMessage("انواع الرياضيات"),
+        "categoryTitle": MessageLookupByLibrary.simpleMessage("انواع الرياضات"),
         "countriesTitle": MessageLookupByLibrary.simpleMessage("الدول"),
         "dialogAction": MessageLookupByLibrary.simpleMessage("حسنا"),
         "dialogContent":

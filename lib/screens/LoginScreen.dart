@@ -80,27 +80,6 @@ class _LoginScreenState extends State<LoginScreen>
                     child: Image.asset('assets/icons/balls-sports.png'),
                   ),
                 ),
-                // AnimatedBuilder(
-                //   animation: _animation,
-                //   builder: (context, child) {
-                //     return Transform.scale(
-                //       scale: _animation.value,
-                //       child: child,
-                //     );
-                //   },
-                //   child: SizedBox(
-                //     //height: 180,
-                //     //width: 180,
-                //     child: Text(
-                //       'Login',
-                //       style: TextStyle(
-                //         color: secondaryColor,
-                //         fontSize: 30,
-                //         fontFamily: 'Ubuntu',
-                //       ),
-                //     ),
-                //   ),
-                // ),
                 SizedBox(
                   child: Text(
                     S.of(context).Login,
@@ -229,7 +208,7 @@ class _LoginScreenState extends State<LoginScreen>
                     TextButton(
                         onPressed: () {
                           Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const Registerscreen(),
+                            builder: (context) => Registerscreen(),
                           ));
                         },
                         child: Text(
@@ -311,14 +290,14 @@ class _LoginScreenState extends State<LoginScreen>
               ),
             ],
           ),
-          content:  Text(
+          content: Text(
             S.of(context).InvalidOTP,
             style: TextStyle(color: secondaryColor, fontSize: 20),
           ),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child:  Text(
+              child: Text(
                 S.of(context).dialogAction,
                 style: TextStyle(color: secondaryColor, fontSize: 20),
               ),
