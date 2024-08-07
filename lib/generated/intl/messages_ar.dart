@@ -88,6 +88,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "SettingsName": MessageLookupByLibrary.simpleMessage("الاعدادات"),
         "Share": MessageLookupByLibrary.simpleMessage("مشاركة"),
         "ShareAppName": MessageLookupByLibrary.simpleMessage("شارك البرنامج"),
+        "Signin": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
+        "Signinwithgoogle":
+            MessageLookupByLibrary.simpleMessage("تسجيل الدخول باستخدام جوجل"),
+        "Signout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
         "Skip": MessageLookupByLibrary.simpleMessage("تخطى"),
         "SplashTitle": MessageLookupByLibrary.simpleMessage("رياضة"),
         "Teams": MessageLookupByLibrary.simpleMessage("الفرق"),
@@ -107,9 +111,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "dialogTitle": MessageLookupByLibrary.simpleMessage("قريبا"),
         "drawerPhone": MessageLookupByLibrary.simpleMessage("٠١٠١٧٣٥٨٣٥٠"),
         "facebookName": MessageLookupByLibrary.simpleMessage("فيس بوك"),
-        "homeTab": MessageLookupByLibrary.simpleMessage("تتتت"),
+        "homeTab": MessageLookupByLibrary.simpleMessage("الصفحة الرئيسية"),
         "instagramName": MessageLookupByLibrary.simpleMessage("انستجرام"),
-        "language": MessageLookupByLibrary.simpleMessage("العربية"),
+        "language": MessageLookupByLibrary.simpleMessage("اللغة"),
         "myAccountTap": MessageLookupByLibrary.simpleMessage("حسابى"),
         "notificationContent":
             MessageLookupByLibrary.simpleMessage("اهلا بالجميع"),
@@ -121,6 +125,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "phoneNumber": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
         "playerNumber": MessageLookupByLibrary.simpleMessage("رقم اللاعب"),
         "players": MessageLookupByLibrary.simpleMessage("اللاعبين"),
+        "welcom": MessageLookupByLibrary.simpleMessage("مرحبا"),
         "whatsAppName": MessageLookupByLibrary.simpleMessage("واتساب"),
         "youtubeName": MessageLookupByLibrary.simpleMessage("يوتيوب")
       };

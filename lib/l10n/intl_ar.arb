@@ -15,7 +15,9 @@
     "dialogContent" : "سوف تتوفر قريبا",
     "dialogAction" : "حسنا",
     "palestineCardContent" : "فلسطين\nحرة",
-    "homeTab" : "تتتت",
+    "welcom" : "مرحبا",
+
+    "homeTab" : "الصفحة الرئيسية",
     "myAccountTap" : "حسابى",
     "facebookName" : "فيس بوك",
     "youtubeName" : "يوتيوب",
@@ -75,7 +77,11 @@
     "InvalidOTP" : "رقم سرى مؤقت غير صالح",
     "Password" : "الرقم السرى",
     "Email" : "البريد الالكترونى",
-    "language" : "العربية"
+    "language" : "اللغة",
+    "Signout" : "تسجيل الخروج",
+    "Signin" : "تسجيل الدخول",
+    "Signinwithgoogle" : "تسجيل الدخول باستخدام جوجل"
+
 
 
 }

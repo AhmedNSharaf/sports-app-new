@@ -52,6 +52,7 @@
     "Share" : "Share",
     "Close" : "Close",
     "notificationTitle" : "Welcom",
+    "welcom" : "Welcom",
     "notificationContent" : "Hello Everybody!",
     "SplashTitle" : "Sports App",
     "OnBoardingTitle1" : "Welcome to Sports App",
@@ -75,7 +76,10 @@
     "InvalidOTP" : "Invalid OTP",
     "Password" : "Password",
     "Email" : "Email",
-    "language" : "English"
+    "language" : "Language",
+    "Signout" : "Signout",
+    "Signin" : "Signin",
+    "Signinwithgoogle" : "Signinwithgoogle"
 
 
 

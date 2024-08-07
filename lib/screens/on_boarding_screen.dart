@@ -3,17 +3,20 @@ import 'package:flutter/material.dart'; // Flutter's material design library
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'; // Package for smooth page indicators
 import 'package:sports_app/generated/l10n.dart';
 import 'package:sports_app/screens/LoginScreen.dart'; // Import the LoginScreen
+import 'package:sports_app/screens/auth.dart';
 import 'package:sports_app/utils/colors.dart'; // Import custom colors used in the app
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key}); // Constructor for the OnboardingScreen
 
   @override
-  OnboardingScreenState createState() => OnboardingScreenState(); // Creates the state for OnboardingScreen
+  OnboardingScreenState createState() =>
+      OnboardingScreenState(); // Creates the state for OnboardingScreen
 }
 
 class OnboardingScreenState extends State<OnboardingScreen> {
-  final PageController _controller = PageController(); // Controller for the PageView
+  final PageController _controller =
+      PageController(); // Controller for the PageView
   late Timer _timer; // Timer to handle automatic page transitions
   int _currentPage = 0; // Current page index
 
@@ -85,11 +88,14 @@ class OnboardingScreenState extends State<OnboardingScreen> {
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: thirdColor, // Background color of the button
-                foregroundColor: secondaryColor, // Foreground (text) color of the button
+                foregroundColor:
+                    secondaryColor, // Foreground (text) color of the button
               ),
-              child:  Text(
+              child: Text(
                 S.of(context).Skip,
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17), // Style of the button text
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 17), // Style of the button text
               ),
             ),
           ),
@@ -123,7 +129,9 @@ class OnboardingScreenState extends State<OnboardingScreen> {
             description,
             textAlign: TextAlign.center, // Center-align the description text
             style: const TextStyle(
-                color: secondaryColor, fontSize: 20, fontFamily: "Rubik"), // Style for the description
+                color: secondaryColor,
+                fontSize: 20,
+                fontFamily: "Rubik"), // Style for the description
           ),
         ],
       ),
@@ -133,14 +141,15 @@ class OnboardingScreenState extends State<OnboardingScreen> {
   // Method to create the custom page route with slide-up transition
   PageRouteBuilder _createSlideUpRoute() {
     return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) => const LoginScreen(),
+      pageBuilder: (context, animation, secondaryAnimation) => Auth(),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         const begin = Offset(0.0, 1.0); // Start from the bottom
         const end = Offset.zero; // End at the top
         const curve = Curves.easeInOut;
 
         var tween = Tween(begin: begin, end: end);
-        var offsetAnimation = animation.drive(tween.chain(CurveTween(curve: curve)));
+        var offsetAnimation =
+            animation.drive(tween.chain(CurveTween(curve: curve)));
 
         return SlideTransition(position: offsetAnimation, child: child);
       },

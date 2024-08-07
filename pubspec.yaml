@@ -28,33 +28,34 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  flutter:
-    sdk: flutter
-
   cupertino_icons: ^1.0.6
-  smooth_page_indicator: ^1.2.0
-  google_sign_in: ^6.2.1
-  shared_preferences: ^2.2.3
-  font_awesome_flutter: ^10.7.0
   dio: ^5.5.0+1
-  geolocator: ^8.0.0
-  geocoding: ^2.0.0
-  provider: ^6.0.0
-  intl: ^0.19.0
-  share_plus: ^9.0.0
-  flutter_local_notifications: ^17.2.1+2
+  firebase_auth: ^5.1.2
   firebase_core: ^3.2.0
   firebase_messaging: ^15.0.3
+  flutter:
+    sdk: flutter
   flutter_bloc: ^8.1.6
+  flutter_local_notifications: ^17.2.1+2
   flutter_localizations:
-        sdk: flutter
-  # url_launcher: ^6.3.0
-  firebase_auth: ^5.1.2
+    sdk: flutter
+  font_awesome_flutter: ^10.7.0
+  geocoding: ^2.0.0
+  geolocator: ^8.0.0
+  google_fonts: ^6.2.1
+  google_sign_in: ^6.2.1
+  intl: ^0.19.0
+  provider: ^6.0.0
+  share_plus: ^9.0.0
+  shared_preferences: ^2.2.3
+  smooth_page_indicator: ^1.2.0
+  keep_screen_on: ^3.0.0
 
+  
 dev_dependencies:
+  flutter_launcher_icons: ^0.13.1
   flutter_test:
     sdk: flutter
-  flutter_launcher_icons: ^0.13.1
 
 flutter_icons:
   android: true

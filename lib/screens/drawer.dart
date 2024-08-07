@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sports_app/generated/l10n.dart';
+import 'package:sports_app/main.dart';
 import 'package:sports_app/screens/LoginScreen.dart';
 import 'package:sports_app/utils/colors.dart';
 import 'package:sports_app/widgets/Drawer/CustomListWidget.dart';
@@ -14,6 +16,8 @@ class AppDrawer extends StatefulWidget {
 }
 
 class _AppDrawerState extends State<AppDrawer> {
+  final user = FirebaseAuth.instance.currentUser!;
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -24,7 +28,7 @@ class _AppDrawerState extends State<AppDrawer> {
             // Drawer Header
             UserAccountsDrawerHeader(
               accountName: widget.phoneNumber != null
-                  ? Text('${S.of(context).Phone}: ${widget.phoneNumber}')
+                  ? Text('${S.of(context).welcom} :\n${user.email}')
                   : const Text('Guest'),
               accountEmail: null,
               currentAccountPicture: const CircleAvatar(
@@ -34,6 +38,7 @@ class _AppDrawerState extends State<AppDrawer> {
                 color: primaryColor,
               ),
             ),
+
             // Tab Bar
             TabBar(
               labelColor: primaryColor,
@@ -130,28 +135,73 @@ class _AppDrawerState extends State<AppDrawer> {
                         leading: const CircleAvatar(
                             backgroundColor: secondaryColor,
                             child: Icon(Icons.settings)),
-                        title: Text(S.of(context).SettingsName),
+                        title: Text(
+                          S.of(context).SettingsName,
+                          style: TextStyle(fontSize: 20),
+                        ),
                         onTap: () {
                           // Navigate to Settings
                           Navigator.pop(context); // Close the drawer
                         },
                       ),
                       ListTile(
-                        leading: const CircleAvatar(
-                            backgroundColor: secondaryColor,
-                            child: Icon(Icons.logout)),
-                        title: Text(
-                          S.of(context).LogOutName,
-                          style: TextStyle(color: primaryColor, fontSize: 20),
-                        ),
-                        onTap: () {
-                          Navigator.of(context).pushReplacement(
-                            MaterialPageRoute(
-                              builder: (context) => const LoginScreen(),
+                        title: PopupMenuButton<String>(
+                          onSelected: (String value) {
+                            if (value == 'en') {
+                              (context.findAncestorStateOfType<MyAppState>())
+                                  ?.setLocale(const Locale('en'));
+                            } else if (value == 'ar') {
+                              (context.findAncestorStateOfType<MyAppState>())
+                                  ?.setLocale(const Locale('ar'));
+                            }
+                          },
+                          itemBuilder: (BuildContext context) =>
+                              <PopupMenuEntry<String>>[
+                            const PopupMenuItem<String>(
+                              value: 'en',
+                              child: Text('English'),
                             ),
-                          ); // Adjust route name as needed
-                        },
+                            const PopupMenuItem<String>(
+                              value: 'ar',
+                              child: Text('العربية'),
+                            ),
+                          ],
+                          child: Row(
+                            children: [
+                              CircleAvatar(
+                                  backgroundColor: secondaryColor,
+                                  child: Icon(Icons.language,
+                                      color: primaryColor)),
+                              SizedBox(width: 16),
+                              Text(
+                                S.of(context).language,
+                                style: TextStyle(fontSize: 20),
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
+                      MaterialButton(
+                        onPressed: FirebaseAuth.instance.signOut,
+                        child: Row(
+                          children: [
+                            SizedBox(
+                              width: 3,
+                            ),
+                            CircleAvatar(
+                                backgroundColor: secondaryColor,
+                                child: Icon(Icons.logout)),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              S.of(context).Signout,
+                              style:
+                                  TextStyle(fontSize: 20, color: primaryColor),
+                            )
+                          ],
+                        ),
+                      )
                     ],
                   ),
                 ],

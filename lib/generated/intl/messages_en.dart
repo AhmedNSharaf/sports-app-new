@@ -87,6 +87,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "SettingsName": MessageLookupByLibrary.simpleMessage("Settings"),
         "Share": MessageLookupByLibrary.simpleMessage("Share"),
         "ShareAppName": MessageLookupByLibrary.simpleMessage("Share App"),
+        "Signin": MessageLookupByLibrary.simpleMessage("Signin"),
+        "Signinwithgoogle":
+            MessageLookupByLibrary.simpleMessage("Signinwithgoogle"),
+        "Signout": MessageLookupByLibrary.simpleMessage("Signout"),
         "Skip": MessageLookupByLibrary.simpleMessage("Skip"),
         "SplashTitle": MessageLookupByLibrary.simpleMessage("Sports App"),
         "Teams": MessageLookupByLibrary.simpleMessage("Teams"),
@@ -108,7 +112,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "facebookName": MessageLookupByLibrary.simpleMessage("Facebook"),
         "homeTab": MessageLookupByLibrary.simpleMessage("Home"),
         "instagramName": MessageLookupByLibrary.simpleMessage("Instagram"),
-        "language": MessageLookupByLibrary.simpleMessage("English"),
+        "language": MessageLookupByLibrary.simpleMessage("Language"),
         "myAccountTap": MessageLookupByLibrary.simpleMessage("My Account"),
         "notificationContent":
             MessageLookupByLibrary.simpleMessage("Hello Everybody!"),
@@ -120,6 +124,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
         "playerNumber": MessageLookupByLibrary.simpleMessage("Players Number"),
         "players": MessageLookupByLibrary.simpleMessage("Players"),
+        "welcom": MessageLookupByLibrary.simpleMessage("Welcom"),
         "whatsAppName": MessageLookupByLibrary.simpleMessage("WhatsApp"),
         "youtubeName": MessageLookupByLibrary.simpleMessage("Youtube")
       };

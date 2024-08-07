@@ -580,6 +580,16 @@ class S {
     );
   }
 
+  /// `Welcom`
+  String get welcom {
+    return Intl.message(
+      'Welcom',
+      name: 'welcom',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Hello Everybody!`
   String get notificationContent {
     return Intl.message(
@@ -810,11 +820,41 @@ class S {
     );
   }
 
-  /// `English`
+  /// `Language`
   String get language {
     return Intl.message(
-      'English',
+      'Language',
       name: 'language',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Signout`
+  String get Signout {
+    return Intl.message(
+      'Signout',
+      name: 'Signout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Signin`
+  String get Signin {
+    return Intl.message(
+      'Signin',
+      name: 'Signin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Signinwithgoogle`
+  String get Signinwithgoogle {
+    return Intl.message(
+      'Signinwithgoogle',
+      name: 'Signinwithgoogle',
       desc: '',
       args: [],
     );

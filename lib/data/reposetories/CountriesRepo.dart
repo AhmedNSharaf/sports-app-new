@@ -7,7 +7,7 @@ class CountriesRepo {
   Future<CountriesData> fetchCountriesData() async {
     try {
       final response = await dio.get(
-        'https://apiv2.allsportsapi.com/football/?met=Countries&APIkey=4dbd8cf7eeee81d13356a42a98b66173295d491fdeaa4434e4a93d64b13a447b',
+        'https://apiv2.allsportsapi.com/football/?met=Countries&APIkey=cd41cc926b48a0bd5c94331afa54e0ba0cde5bad5da1aaa15e2a298fbea30cf9',
       );
 
       if (response.statusCode == 200) {
